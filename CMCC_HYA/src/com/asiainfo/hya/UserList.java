@@ -15,7 +15,6 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 
 import com.asiainfo.hya.util.db.DB;
-import com.haoxw.db.utils.DateUtil;
 
 public class UserList {
 

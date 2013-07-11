@@ -18,6 +18,5 @@
 	<classpathentry kind="lib" path="lib/commons-beanutils-1.8.3.jar"/>
 	<classpathentry kind="lib" path="lib/commons-beanutils-bean-collections.jar"/>
 	<classpathentry kind="lib" path="lib/commons-beanutils-core.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/appBi"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
