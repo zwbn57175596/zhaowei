@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My custom js Interface</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <script src="my.js"></script>
+</head>
+<body>
+<h1>不过是一个傻逼页面</h1>
+<hr/>
+<input type="button" value="Show Dialog" onClick="showAndroidToast('This is Js Alert.')" />
+<input type="button" value="next SB PAGE" onClick="Android.openUrl('file:///android_asset/weather/index.html')" />
+
+<input type="button" value="save local" onClick="saveLocal('This is Local.')" />
+<input type="button" value="get local" onClick="getLocal('key')" />
+
+<input type="button" value="callback" onclick="Android.reqHttpGet('foolishurl', 'foollishCallBack')" />
+</body>
+</html>

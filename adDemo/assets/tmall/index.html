@@ -1,0 +1,43 @@
+<!DOCTYPE html><html><head><meta charset="utf-8" /><title>天猫双十一高德分会场</title><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" /><meta name="format-detection" content="telephone=no" /><meta name="author" content="Rick Cart, framecoder@gmail.com" /><link type="text/css" rel="stylesheet" href="attach/index.css" /></head><body><div id="container"><div id="tmall"><section><article><img src="attach/images/pic1.jpg" /><p>到达参与活动品牌门店，与天猫海报合影，发送照片+#双11我看见你了#@天猫@海报上的品牌官微+分享内容到新浪微博，就有机会赢取Ipad mini</p></article><aside><b>活动规则:</b>抽奖环节及奖品发放均由“天猫”进行,最终解释权归天猫所有,中奖名单欢迎关注@天猫@高德地图</aside><div><a id="share" onclick="Action.share('weibo','#双11我看见你了# @高德地图 @天猫',false);"></a><b>分享抽大奖</b><span>10月1日 - 11月10日</span></div></section><section><article><img src="attach/images/pic2.jpg" /><p>活动期间内到指定门店进行签到，即有机会赢取每日10000集分宝，更有iphone5S等终极大奖等你拿</p></article><aside><b>活动规则:</b>用户签到须登录淘宝帐号并在门店内进行,最终解释权归高德所有</aside><div><a id="sign" onclick="Action.triggerFeature('nearbyShop');"></a><b>签到送不停</b><span>10月1日 - 11月10日</span></div></section><section class="later"><article><img src="attach/images/pic3.jpg" /><p>活动期间内到指定门店参与商家互动即可领取双十一折上折超值现金券，无门槛，直抵现金</p></article><aside><b>活动规则:</b>互动环节详见店内提示,优惠劵请按说明使用,最终解释权归天猫所有</aside><div><a id="youhui"></a><b>线下有好礼</b><span>10月14日 - 11月10日</span></div></section><section class="later"><article><img src="attach/images/pic4.jpg" /><p>活动期间内到指定门店找到双十一活动专区，扫码将宝贝提前加入购物车，更快一步抢到心仪宝贝！</p></article><aside><b>活动规则:</b>扫码提前将心仪宝贝加入购物车,须在11.11当天付款完成全部交易,最终解释权归天猫所有</aside><div><a id="tejia"></a><b>扫码抢宝贝</b><span>11月09日 - 11月10日</span></div></section><footer id="task"><i>1</i><i>2</i><i>3</i><i>4</i></footer></div></div><script type="text/javascript" src="../attach/jquery.min.js?0929293"></script><script type="text/javascript" src="../attach/Matrix.js?0929293"></script><script type="text/javascript">
+Matrix.connect('tmall');
+(function(){
+	var ww=$(window).width(), max=$('#tmall > section').length;
+	$('#tmall section').width(ww*0.93);
+	var iw=$('#tmall section').outerWidth(), offset=8;
+	$('#tmall').width(iw*max);
+	var moveX=startX=next=animate=left=cur=0;
+	$('body').bind('touchstart',function(e){
+		e=e.originalEvent || e;
+		startX=e.touches[0].pageX;
+	}).bind('touchmove',function(e){
+		e=e.originalEvent || e;
+		e.preventDefault();
+	}).bind('touchend',function(e){
+		e=e.originalEvent || e;
+		moveX=e.changedTouches[0].pageX;
+		var move = moveX - startX;
+		if (Math.abs(move)>=offset){
+			if(move>0){ // 向右滑动
+				cur--;
+			}else{
+				cur++;
+			}
+			if(cur>=max){
+				cur=max-1;
+			}else if(cur<0){
+				cur=0;
+			}
+			left=Next(cur);
+			$('#tmall').css('-webkit-transform','translateX(-'+left+'px)');
+		}
+	});
+	function Next(i){
+		if (i<=0) return 0;
+		if (i>=(max-1)){
+			i=max-1;
+			return 6 + iw*i - (ww-iw);
+		}
+		return 3 + iw*i - (ww-iw)/2;
+	}
+})();
+</script></body></html>

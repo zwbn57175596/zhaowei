@@ -1,0 +1,201 @@
+/*
+ * Rev: TplRelease
+ * Ver: 293
+ * Date: 2013/09/29
+ * Author: Rick  [tagsworld@gmail.com]
+ * Author: Bella [chujingjing2006@gmail.com]
+ */
+* {
+    padding: 0;
+    margin: 0;
+    font-style: normal
+}
+
+body {
+    background: url(images/background.png);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+}
+
+#container {
+    overflow: hidden
+}
+
+#tmall {
+    display: -webkit-box;
+    position: relative;
+    margin-bottom: 20px;
+    padding: 0 3px;
+    -webkit-transition: -webkit-transform 0.5s ease-in-out
+}
+
+#tmall section {
+    padding: 7px 3px 9px
+}
+
+#tmall article {
+    position: relative
+}
+
+.later article:before {
+    content: "";
+    position: absolute;
+    left: -3px;
+    top: 30%;
+    width: 55px;
+    height: 25px;
+    background: url(images/comesoon.png);
+    background-size: 100% 100%
+}
+
+.later a {
+    opacity: 0.3
+}
+
+#tmall img {
+    display: block;
+    width: 100%;
+    -webkit-border-radius: 4px
+}
+
+#tmall p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px 10px;
+    background: rgba(0, 0, 0, 0.76);
+    -webkit-border-radius: 0 0 4px 4px;
+    color: white;
+    font-size: 11px;
+    line-height: 160%
+}
+
+#tmall aside {
+    display: block;
+    position: relative;
+    background: url(images/icon_text.png) no-repeat;
+    background-size: 32px 32px;
+    padding: 10px 10px 10px 30px;
+    color: #737373;
+    border-bottom: 1px solid #d7d8d4;
+    font-size: 10px
+}
+
+#tmall aside b {
+    color: #333333
+}
+
+#tmall section div {
+    padding: 6px 8px;
+    margin: 7px 0 12px;
+    background: white;
+    position: relative;
+    -webkit-border-radius: 4px;
+    -webkit-box-shadow: 1px 1px 1px silver
+}
+
+#tmall section div b {
+    display: block;
+    font-size: 18px;
+    color: #c30202;
+    font-weight: 600
+}
+
+#tmall section div span {
+    display: block;
+    color: #737373;
+    background: url(images/icon_clock.png) -4px 50% no-repeat;
+    background-size: 24px 24px;
+    text-indent: 20px
+}
+
+#tmall section div:after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: white;
+    position: absolute;
+    bottom: -4px;
+    left: 15px;
+    -webkit-transform: rotate(45deg);
+    -webkit-box-shadow: 1px 1px 1px silver
+}
+
+#share {
+    width: 105px;
+    height: 37px;
+    background: url(images/btn_share.png);
+    background-size: 100% 100%;
+    border: none;
+    float: right
+}
+
+#sign {
+    width: 105px;
+    height: 37px;
+    background: url(images/btn_sign.png);
+    background-size: 100% 100%;
+    border: none;
+    float: right
+}
+
+#youhui {
+    width: 105px;
+    height: 37px;
+    background: url(images/btn_youhui.png);
+    background-size: 100% 100%;
+    border: none;
+    float: right
+}
+
+#tejia {
+    width: 105px;
+    height: 37px;
+    background: url(images/btn_tejia.png);
+    background-size: 100% 100%;
+    border: none;
+    float: right
+}
+
+#task {
+    background: #c30202;
+    height: 3px;
+    position: absolute;
+    bottom: 0;
+    left: 17px;
+    right: 6px
+}
+
+#task i {
+    display: inline-block;
+    position: absolute;
+    -webkit-border-radius: 16px;
+    border: 2px solid #c30202;
+    background: white;
+    top: -8px;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    text-indent: -1px;
+    margin-left: -2px
+}
+
+#task i:nth-child(2) {
+    left: 25%;
+    margin-left: 2px
+}
+
+#task i:nth-child(3) {
+    left: 50%;
+    margin-left: 6px
+}
+
+#task i:nth-child(4) {
+    left: 75%;
+    margin-left: 10px
+}

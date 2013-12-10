@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>天猫双十一任务墙</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="author" content="Rick Cart, framecoder@gmail.com" />
+    <link type="text/css" rel="stylesheet" href="attach/task.css" />
+</head>
+<body>
+<section id="tmall">
+    <img src="attach/images/pic5.jpg" />
+    <p><a id="qiandao" onclick="Action.triggerFeature('nearbyShop');"></a></p>
+</section>
+<section>
+    <h3>你们都被骗了！！！</h3>
+</section>
+<script type="text/javascript" src="../attach/jquery.min.js"></script><script type="text/javascript" src="../attach/Matrix.js"></script><script type="text/javascript">
+	$('nav i').click(function(e){
+		var _this = $(this);
+		_this.addClass('hover').siblings().removeClass('hover');
+		var tmp = $('section>article').eq(_this.index()); 
+		tmp.css('display','block');//2.x 系统tmp.show() 显示空白页面
+		tmp.siblings('article').hide();
+	});
+	Matrix.connect('taskwall');
+</script></body></html>
