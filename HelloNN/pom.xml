@@ -40,8 +40,16 @@
 				<artifactId>android-maven-plugin</artifactId>
 				<configuration>
 					<sdk>
-						<platform>19</platform>
+						<platform>16</platform>
 					</sdk>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
 				</configuration>
 			</plugin>
 		</plugins>
