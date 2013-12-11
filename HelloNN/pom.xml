@@ -41,8 +41,20 @@
 				<artifactId>android-maven-plugin</artifactId>
 				<configuration>
 					<sdk>
+<<<<<<< HEAD
 						<platform>${android.platform}</platform>
+=======
+						<platform>16</platform>
+>>>>>>> c11ee2a7b4cf68edd5717440b38929a8ac190b8a
 					</sdk>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
 				</configuration>
 			</plugin>
 		</plugins>

@@ -12,6 +12,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
+<<<<<<< HEAD
         android:theme="@style/AppTheme" >
         <activity android:name="com.zhaowei.HelloNN.HelloAndroidActivity" >
             <intent-filter>
@@ -25,6 +26,10 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_web_view"
             android:theme="@style/FullscreenTheme" >
+=======
+        android:theme="@style/AppTheme">
+        <activity android:name="com.zhaowei.HelloNN.HelloAndroidActivity" >
+>>>>>>> c11ee2a7b4cf68edd5717440b38929a8ac190b8a
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
