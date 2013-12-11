@@ -10,9 +10,9 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<platform.version>2.2.1</platform.version>
+		<platform.version>2.3.3</platform.version>
 		<android.plugin.version>3.8.1</android.plugin.version>
-		<android.platform>8</android.platform>
+		<android.platform>10</android.platform>
 	</properties>
 
 	<dependencies>
@@ -41,12 +41,13 @@
 				<artifactId>android-maven-plugin</artifactId>
 				<configuration>
 					<sdk>
-<<<<<<< HEAD
 						<platform>${android.platform}</platform>
-=======
-						<platform>16</platform>
->>>>>>> c11ee2a7b4cf68edd5717440b38929a8ac190b8a
 					</sdk>
+					<emulator>
+						<avd>galaxyace</avd>
+						<wait>30000</wait>
+					</emulator>
+					<extensions>true</extensions>
 				</configuration>
 			</plugin>
 			<plugin>
