@@ -10,9 +10,9 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<platform.version>2.3.3</platform.version>
+		<platform.version>4.0.1.2</platform.version>
 		<android.plugin.version>3.8.1</android.plugin.version>
-		<android.platform>10</android.platform>
+		<android.platform>14</android.platform>
 	</properties>
 
 	<dependencies>
@@ -44,7 +44,7 @@
 						<platform>${android.platform}</platform>
 					</sdk>
 					<emulator>
-						<avd>galaxyace</avd>
+						<avd>android2.3.3</avd>
 						<wait>30000</wait>
 					</emulator>
 					<extensions>true</extensions>
