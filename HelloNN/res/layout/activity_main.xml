@@ -20,13 +20,20 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView1"
         android:layout_marginTop="27dp"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:background="@drawable/bg" >
 
         <Button
             android:id="@+id/button1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="changeword" />
+            android:text="@string/changeword" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/changeActivity" />
 
     </LinearLayout>
 

@@ -1,6 +1,7 @@
 package com.zhaowei.HelloNN;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -26,6 +27,15 @@ public class HelloAndroidActivity extends Activity {
             public void onClick(View arg0) {
                 TextView textView = (TextView) findViewById(R.id.textView1);
                 textView.setText("you click me");
+            }
+        });
+        findViewById(R.id.button2).setOnClickListener(new OnClickListener() {
+            
+            @Override
+            public void onClick(View arg0) {
+                Intent intent = new Intent();
+                intent.setClass(arg0.getContext(), Display.class);
+                startActivity(intent);
             }
         });
     }
