@@ -55,6 +55,19 @@ public class Fruit implements java.io.Serializable {
      * super(); this.name = name; this.desc = desc; this.pinyin = pinyin;
      * this.pic = pic; }
      */
+    
+    /**
+     * create a new fruit
+     * @param name
+     * @param desc
+     * @param pinyin
+     */
+    public Fruit(String name, String desc, String pinyin) {
+        super();
+        this.name = name;
+        this.desc = desc;
+        this.pinyin = pinyin;
+    }
 
     public Fruit(Integer id, String name, String desc, String pinyin) {
         super();

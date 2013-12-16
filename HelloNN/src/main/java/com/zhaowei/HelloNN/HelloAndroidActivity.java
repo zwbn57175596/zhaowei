@@ -6,10 +6,12 @@ import com.zhaowei.HelloNN.DB.DBManager;
 import com.zhaowei.HelloNN.DB.pojo.Fruit;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -57,8 +59,14 @@ public class HelloAndroidActivity extends Activity {
         } else {
             result.setText("亲，这种水果有点多哈");
         }
-//        result.clearComposingText();
         
+        for (Fruit f : mgr.query()) {
+            Log.d("change", f.getId().intValue() + "-" + f.getName() + "-" + f.getDesc());
+        }
+//        for (Fruit f : mgr.queryNoChange()) {
+//            Log.d("no_change", f.getId().intValue() + "-" + f.getName() + "-" + f.getDesc());
+//        }
+//        result.clearComposingText();
     }
 
 //    public void query(View view) {
@@ -106,17 +114,16 @@ public class HelloAndroidActivity extends Activity {
          * (TextView) findViewById(R.id.textView1);
          * textView.setText("you click me"); } });
          */
-//        findViewById(R.id.button2).setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View arg0) {
-//                Intent intent = new Intent();
-//                intent.setClass(arg0.getContext(), Display.class);
-//                startActivity(intent);
-//            }
-//        });
+        findViewById(R.id.button2).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                Intent intent = new Intent();
+                intent.setClass(arg0.getContext(), Display.class);
+                startActivity(intent);
+            }
+        });
     }
 
-    
     @Override
     protected void onDestroy() {
         mgr.closeDB();

@@ -30,6 +30,7 @@ public class DBManager {
 
     /**
      * 结果果封装
+     * 
      * @param cursor
      * @return
      * @throws UnsupportedEncodingException
@@ -37,9 +38,9 @@ public class DBManager {
     private List<Fruit> cursor2OjbList(Cursor c) throws UnsupportedEncodingException {
         ArrayList<Fruit> result = new ArrayList<Fruit>();
         while (c.moveToNext()) {
-            String name = new String(c.getBlob(c.getColumnIndex("name")), "GBK");
-            String desc = new String(c.getBlob(c.getColumnIndex("desc")), "GBK");
-            String pinyin = new String(c.getBlob(c.getColumnIndex("pinyin")), "GBK");
+            String name = new String(c.getBlob(c.getColumnIndex("name")));
+            String desc = new String(c.getBlob(c.getColumnIndex("desc")));
+            String pinyin = new String(c.getBlob(c.getColumnIndex("pinyin")));
             result.add(new Fruit(c.getInt(c.getColumnIndex("id")), name, desc, pinyin));
         }
         return result;
@@ -47,30 +48,29 @@ public class DBManager {
 
     /**
      * 搜索水果
+     * 
      * @param keyword
      * @return
      */
     public List<Fruit> searchFruit(String keyword) {
-        Cursor c = null; 
-       
+        Cursor c = null;
+
         List<Fruit> result = new ArrayList<Fruit>();
-         try {
-        	 // keyword = new String(keyword.getBytes(), "UTF-8");
-             c = db.rawQuery("select * from fruit where name like ? ", new String[]{"'%" + keyword+ "%'"});
-             result.addAll(cursor2OjbList(c));
-             c.close();
-             c = db.rawQuery("select * from fruit where pinyin like ? ", new String[]{"'%" + keyword+ "%'"});
-             result.addAll(cursor2OjbList(c));
-             c = db.rawQuery("select * from fruit ", null);
-             result.addAll(cursor2OjbList(c));
+        try {
+//            keyword = new String(keyword.getBytes("GBK"));
+            c = db.rawQuery("select * from fruit where name like ? ", new String[] { "%" + keyword + "%" });
+            result.addAll(cursor2OjbList(c));
+            c.close();
+            c = db.rawQuery("select * from fruit where pinyin like ? ", new String[] { "%" + keyword + "%" });
+            result.addAll(cursor2OjbList(c));
             return result;
         } catch (UnsupportedEncodingException e) {
             Log.e("dbManage query error", "dbManage query error", e);
         } finally {
             c.close();
         }
-         return null;
-    } 
+        return null;
+    }
 
     /**
      * update person's age
@@ -98,19 +98,32 @@ public class DBManager {
      * 
      * @return List<Person>
      */
+//    public List<Fruit> query() {
+//        ArrayList<Fruit> result = new ArrayList<Fruit>();
+//        Cursor c = queryTheCursor();
+//        try {
+//            while (c.moveToNext()) {
+//                String name = new String(c.getBlob(c.getColumnIndex("name")), "GBK");
+//                String desc = new String(c.getBlob(c.getColumnIndex("desc")), "GBK");
+//                String pinyin = new String(c.getBlob(c.getColumnIndex("pinyin")), "GBK");
+//                result.add(new Fruit(c.getInt(c.getColumnIndex("id")), name, desc, pinyin));
+//            }
+//
+//        } catch (UnsupportedEncodingException e) {
+//            Log.e("dbManage query error", "dbManage query error", e);
+//        }
+//        c.close();
+//        return result;
+//    }
+
     public List<Fruit> query() {
         ArrayList<Fruit> result = new ArrayList<Fruit>();
         Cursor c = queryTheCursor();
-        try {
-            while (c.moveToNext()) {
-                String name = new String(c.getBlob(c.getColumnIndex("name")), "GBK");
-                String desc = new String(c.getBlob(c.getColumnIndex("desc")), "GBK");
-                String pinyin = new String(c.getBlob(c.getColumnIndex("pinyin")), "GBK");
-                result.add(new Fruit(c.getInt(c.getColumnIndex("id")), name, desc, pinyin));
-            }
-
-        } catch (UnsupportedEncodingException e) {
-            Log.e("dbManage query error", "dbManage query error", e);
+        while (c.moveToNext()) {
+            String name = new String(c.getBlob(c.getColumnIndex("name")));
+            String desc = new String(c.getBlob(c.getColumnIndex("desc")));
+            String pinyin = new String(c.getBlob(c.getColumnIndex("pinyin")));
+            result.add(new Fruit(c.getInt(c.getColumnIndex("id")), name, desc, pinyin));
         }
         c.close();
         return result;
