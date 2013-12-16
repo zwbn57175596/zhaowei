@@ -41,7 +41,8 @@ public class DBManager {
             String name = new String(c.getBlob(c.getColumnIndex("name")));
             String desc = new String(c.getBlob(c.getColumnIndex("desc")));
             String pinyin = new String(c.getBlob(c.getColumnIndex("pinyin")));
-            result.add(new Fruit(c.getInt(c.getColumnIndex("id")), name, desc, pinyin));
+            String pic = new String(c.getBlob(c.getColumnIndex("pic")));
+            result.add(new Fruit(c.getInt(c.getColumnIndex("id")), name, desc, pinyin, pic));
         }
         return result;
     }
@@ -57,7 +58,7 @@ public class DBManager {
 
         List<Fruit> result = new ArrayList<Fruit>();
         try {
-//            keyword = new String(keyword.getBytes("GBK"));
+            // keyword = new String(keyword.getBytes("GBK"));
             c = db.rawQuery("select * from fruit where name like ? ", new String[] { "%" + keyword + "%" });
             result.addAll(cursor2OjbList(c));
             c.close();
@@ -98,23 +99,24 @@ public class DBManager {
      * 
      * @return List<Person>
      */
-//    public List<Fruit> query() {
-//        ArrayList<Fruit> result = new ArrayList<Fruit>();
-//        Cursor c = queryTheCursor();
-//        try {
-//            while (c.moveToNext()) {
-//                String name = new String(c.getBlob(c.getColumnIndex("name")), "GBK");
-//                String desc = new String(c.getBlob(c.getColumnIndex("desc")), "GBK");
-//                String pinyin = new String(c.getBlob(c.getColumnIndex("pinyin")), "GBK");
-//                result.add(new Fruit(c.getInt(c.getColumnIndex("id")), name, desc, pinyin));
-//            }
-//
-//        } catch (UnsupportedEncodingException e) {
-//            Log.e("dbManage query error", "dbManage query error", e);
-//        }
-//        c.close();
-//        return result;
-//    }
+    // public List<Fruit> query() {
+    // ArrayList<Fruit> result = new ArrayList<Fruit>();
+    // Cursor c = queryTheCursor();
+    // try {
+    // while (c.moveToNext()) {
+    // String name = new String(c.getBlob(c.getColumnIndex("name")), "GBK");
+    // String desc = new String(c.getBlob(c.getColumnIndex("desc")), "GBK");
+    // String pinyin = new String(c.getBlob(c.getColumnIndex("pinyin")), "GBK");
+    // result.add(new Fruit(c.getInt(c.getColumnIndex("id")), name, desc,
+    // pinyin));
+    // }
+    //
+    // } catch (UnsupportedEncodingException e) {
+    // Log.e("dbManage query error", "dbManage query error", e);
+    // }
+    // c.close();
+    // return result;
+    // }
 
     public List<Fruit> query() {
         ArrayList<Fruit> result = new ArrayList<Fruit>();
@@ -123,7 +125,8 @@ public class DBManager {
             String name = new String(c.getBlob(c.getColumnIndex("name")));
             String desc = new String(c.getBlob(c.getColumnIndex("desc")));
             String pinyin = new String(c.getBlob(c.getColumnIndex("pinyin")));
-            result.add(new Fruit(c.getInt(c.getColumnIndex("id")), name, desc, pinyin));
+            String pic = new String(c.getBlob(c.getColumnIndex("pic")));
+            result.add(new Fruit(c.getInt(c.getColumnIndex("id")), name, desc, pinyin, pic));
         }
         c.close();
         return result;

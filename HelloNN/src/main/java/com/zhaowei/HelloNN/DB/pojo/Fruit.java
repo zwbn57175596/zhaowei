@@ -69,12 +69,13 @@ public class Fruit implements java.io.Serializable {
         this.pinyin = pinyin;
     }
 
-    public Fruit(Integer id, String name, String desc, String pinyin) {
+    public Fruit(Integer id, String name, String desc, String pinyin, String pic) {
         super();
         this.id = id;
         this.name = name;
         this.desc = desc;
         this.pinyin = pinyin;
+        this.pic = pic;
     }
 
     public Integer getId() {

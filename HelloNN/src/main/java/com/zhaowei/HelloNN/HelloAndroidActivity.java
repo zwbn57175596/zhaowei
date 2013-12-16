@@ -4,10 +4,15 @@ import java.util.List;
 
 import com.zhaowei.HelloNN.DB.DBManager;
 import com.zhaowei.HelloNN.DB.pojo.Fruit;
+import com.zhaowei.HelloNN.R.drawable;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.ImageSpan;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -52,14 +57,29 @@ public class HelloAndroidActivity extends Activity {
         Log.d("SearchFruit  user input is ", keyword);
         List<Fruit> fruits = mgr.searchFruit(keyword);
         Log.d("Search after", String.valueOf(fruits.size()));
-        if (fruits.size() <= 0) {
-            result.setText("亲，偶木有见过这个水果哦。是不是打错字了？");
-        } else if (fruits.size() >= 1) {
-            result.setText(fruits.get(0).getName() + "     " + fruits.get(0).getDesc());
-        } else {
-            result.setText("亲，这种水果有点多哈");
-        }
+        user_Input.clearFocus();
         
+        String searchResult = null;
+        if (fruits.size() <= 0) {
+            searchResult = "亲，偶木有见过这个水果哦。是不是打错字了？";
+        } else if (fruits.size() >= 1) {
+            searchResult =  fruits.get(0).getName() + "     " + fruits.get(0).getDesc();
+        } else {
+            searchResult = "亲，这种水果有点多哈";
+        }
+//        ImageSpan is = new ImageSpan(this, R.drawable.apple);
+//        SpannableString ss = new SpannableString(" ");
+//        ss.setSpan(is, ss.length() - 1, ss.length(), SpannableString.SPAN_INCLUSIVE_EXCLUSIVE);
+//        
+//        SpannableStringBuilder ssb = new SpannableStringBuilder();
+//        ssb.append(ss);
+//        ssb.append("  ");
+//        ssb.append(searchResult);
+//        result.setText(ssb);
+        Drawable d = getResources().getDrawable(R.drawable.apple);
+        d.setBounds(0, 0, 50, 50);
+        result.setCompoundDrawables(d, null, null, null);
+        result.setText(searchResult);
         for (Fruit f : mgr.query()) {
             Log.d("change", f.getId().intValue() + "-" + f.getName() + "-" + f.getDesc());
         }
