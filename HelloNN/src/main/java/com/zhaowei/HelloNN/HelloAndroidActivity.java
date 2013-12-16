@@ -52,7 +52,7 @@ public class HelloAndroidActivity extends Activity {
         Log.d("Search after", String.valueOf(fruits.size()));
         if (fruits.size() <= 0) {
             result.setText("亲，偶木有见过这个水果哦。是不是打错字了？");
-        } else if (fruits.size() == 1) {
+        } else if (fruits.size() >= 1) {
             result.setText(fruits.get(0).getName() + "     " + fruits.get(0).getDesc());
         } else {
             result.setText("亲，这种水果有点多哈");

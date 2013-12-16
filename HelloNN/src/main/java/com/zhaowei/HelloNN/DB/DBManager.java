@@ -15,7 +15,6 @@ import com.zhaowei.HelloNN.DB.pojo.Fruit;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.CursorJoiner.Result;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 import android.util.Log;
@@ -53,12 +52,16 @@ public class DBManager {
      */
     public List<Fruit> searchFruit(String keyword) {
         Cursor c = null; 
+       
         List<Fruit> result = new ArrayList<Fruit>();
          try {
-             c = db.rawQuery("select * from fruit where name like ? ", new String[]{"%" + keyword+ "%"});
+        	 // keyword = new String(keyword.getBytes(), "UTF-8");
+             c = db.rawQuery("select * from fruit where name like ? ", new String[]{"'%" + keyword+ "%'"});
              result.addAll(cursor2OjbList(c));
              c.close();
-             c = db.rawQuery("select * from fruit where pinyin like ? ", new String[]{"%" + keyword+ "%"});
+             c = db.rawQuery("select * from fruit where pinyin like ? ", new String[]{"'%" + keyword+ "%'"});
+             result.addAll(cursor2OjbList(c));
+             c = db.rawQuery("select * from fruit ", null);
              result.addAll(cursor2OjbList(c));
             return result;
         } catch (UnsupportedEncodingException e) {
