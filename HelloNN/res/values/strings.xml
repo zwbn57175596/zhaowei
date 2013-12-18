@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">水果百科</string>
     <string name="hello">Hello HelloNN!</string>
     <string name="action_settings">Settings</string>
@@ -12,4 +13,6 @@
     <string name="changeword">changeword</string>
     <string name="changeActivity">changeActivity</string>
     <string name="button">Button</string>
+    <string name="title_activity_fruit_info">FruitInfoActivity</string>
+
 </resources>
