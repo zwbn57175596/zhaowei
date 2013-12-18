@@ -1,17 +1,11 @@
 package com.zhaowei.HelloNN;
 
-import java.util.List;
-
-import com.zhaowei.HelloNN.DB.pojo.Fruit;
-
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -24,8 +18,12 @@ public class HelloAndroidActivity extends Activity {
     public void searchFruit(View view) {
         Log.d("SearchFruit", "enter search");
         // TODO 发送参数并跳转
-        String userInput = user_Input.getEditableText().toString();
+        String userInput = user_Input.getText().toString();
         Log.d("SearchFruit  user input is ", userInput);
+        Intent i = new Intent();
+        i.putExtra("userInput", userInput);
+        i.setClass(this, FruitInfoActivity.class);
+        startActivity(i);
     }
     
     // public void queryFruit(View view) {

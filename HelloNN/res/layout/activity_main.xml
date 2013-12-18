@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
             android:onClick="searchFruit"
-            android:text="@string/button" />
+            android:text="搜索" />
     </LinearLayout>
 
     <ScrollView
@@ -69,14 +69,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:contentDescription="ic"
-                        android:src="@drawable/ic_launcher" />
+                        android:src="@drawable/cherry" />
 
                     <ImageView
                         android:id="@+id/imageView3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:contentDescription="lizi again"
-                        android:src="@drawable/li" />
+                        android:src="@drawable/kiwi" />
+                    
+                     <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="lizi"
+                        android:src="@drawable/peach" />
                 </TableRow>
 
                 <TableRow
@@ -85,18 +92,25 @@
                     android:layout_height="wrap_content" >
 
                     <ImageView
-                        android:id="@+id/imageView4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="lizi"
-                        android:src="@drawable/li" />
-
-                    <ImageView
                         android:id="@+id/imageView5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:contentDescription="qiyiguo"
-                        android:src="@drawable/qiyiguo" />
+                        android:contentDescription="lizi"
+                        android:src="@drawable/peach" />
+
+					<ImageView
+                        android:id="@+id/imageView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="ic"
+                        android:src="@drawable/cherry" />
+
+                    <ImageView
+                        android:id="@+id/imageView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="lizi again"
+                        android:src="@drawable/lemon" />
                 </TableRow>
 
                 <TableRow

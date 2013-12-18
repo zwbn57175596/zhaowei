@@ -7,11 +7,11 @@ import com.zhaowei.HelloNN.DB.pojo.Fruit;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 import android.os.Build;
 
@@ -21,50 +21,55 @@ public class FruitInfoActivity extends Activity {
     
     private TextView result = null;
     
-    public void searchFruit(View view) {
-        Log.d("SearchFruit", "enter search");
-//        String keyword = user_Input.getText().toString();
-        // TODO 接受Intent参数
-        Log.d("SearchFruit  user input is ", null);
-        List<Fruit> fruits = mgr.searchFruit(null);
+    
+    
+    @Override
+    protected void onStart() {
+        // TODO Auto-generated method stub
+        super.onStart();
+        Intent i = getIntent();
+        String userInput = i.getStringExtra("userInput");
+        Log.d("SearchFruit", "pass params is : " + userInput);
+//      String keyword = user_Input.getText().toString();
+        List<Fruit> fruits = mgr.searchFruit(userInput);
         Log.d("Search after", String.valueOf(fruits.size()));
-//        user_Input.clearFocus();
-        
-        String searchResult = null;
-        if (fruits.size() <= 0) {
-            searchResult = "亲，偶木有见过这个水果哦。是不是打错字了？";
-        } else if (fruits.size() >= 1) {
-            searchResult =  fruits.get(0).getName() + "     " + fruits.get(0).getDesc();
-        } else {
-            searchResult = "亲，这种水果有点多哈";
-        }
-//        ImageSpan is = new ImageSpan(this, R.drawable.apple);
-//        SpannableString ss = new SpannableString(" ");
-//        ss.setSpan(is, ss.length() - 1, ss.length(), SpannableString.SPAN_INCLUSIVE_EXCLUSIVE);
-//        
-//        SpannableStringBuilder ssb = new SpannableStringBuilder();
-//        ssb.append(ss);
-//        ssb.append("  ");
-//        ssb.append(searchResult);
-//        result.setText(ssb);
-        Drawable d = getResources().getDrawable(R.drawable.apple);
-        d.setBounds(0, 0, 50, 50);
-        result.setCompoundDrawables(d, null, null, null);
-        result.setText(searchResult);
-        for (Fruit f : mgr.query()) {
-            Log.d("change", f.getId().intValue() + "-" + f.getName() + "-" + f.getDesc());
-        }
-//        for (Fruit f : mgr.queryNoChange()) {
-//            Log.d("no_change", f.getId().intValue() + "-" + f.getName() + "-" + f.getDesc());
-//        }
-//        result.clearComposingText();
+//      user_Input.clearFocus();
+      
+      String searchResult = null;
+      if (fruits.size() <= 0) {
+          searchResult = "亲，偶木有见过这个水果哦。是不是打错字了？";
+      } else if (fruits.size() >= 1) {
+          searchResult =  fruits.get(0).getName() + "     " + fruits.get(0).getDesc();
+      } else {
+          searchResult = "亲，这种水果有点多哈";
+      }
+//      ImageSpan is = new ImageSpan(this, R.drawable.apple);
+//      SpannableString ss = new SpannableString(" ");
+//      ss.setSpan(is, ss.length() - 1, ss.length(), SpannableString.SPAN_INCLUSIVE_EXCLUSIVE);
+//      
+//      SpannableStringBuilder ssb = new SpannableStringBuilder();
+//      ssb.append(ss);
+//      ssb.append("  ");
+//      ssb.append(searchResult);
+//      result.setText(ssb);
+      Drawable d = getResources().getDrawable(R.drawable.apple);
+      d.setBounds(0, 0, 50, 50);
+      result.setCompoundDrawables(d, null, null, null);
+      result.setText(searchResult);
+      for (Fruit f : mgr.query()) {
+          Log.d("change", f.getId().intValue() + "-" + f.getName() + "-" + f.getDesc());
+      }
+//      for (Fruit f : mgr.queryNoChange()) {
+//          Log.d("no_change", f.getId().intValue() + "-" + f.getName() + "-" + f.getDesc());
+//      }
+//      result.clearComposingText();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mgr = new DBManager(this);
-        result = (TextView) findViewById(R.id.textview1);
+        result = (TextView) findViewById(R.id.textview2);
         setContentView(R.layout.activity_fruit_info);
         // Show the Up button in the action bar.
         setupActionBar();

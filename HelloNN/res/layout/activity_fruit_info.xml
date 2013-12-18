@@ -12,7 +12,8 @@
         android:id="@+id/linearLayout0"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        tools:ignore="UselessParent" >
 
         <ScrollView
             android:layout_width="fill_parent"
@@ -20,7 +21,7 @@
             android:scrollbars="vertical" >
 
             <TextView
-                android:id="@+id/textview1"
+                android:id="@+id/textview2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dip" />
