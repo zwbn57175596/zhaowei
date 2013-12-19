@@ -2,6 +2,8 @@ package com.zhaowei.HelloNN;
 
 import java.util.List;
 
+import com.zhaowei.HelloNN.DB.pojo.Fruit;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +29,7 @@ public class GridAdapter extends BaseAdapter {
 
     private Context context;
 
-    private List<GridInfo> list;
+    private List<Fruit> list;
     private LayoutInflater mInflater;
 
     public GridAdapter(Context c) {
@@ -35,7 +37,7 @@ public class GridAdapter extends BaseAdapter {
         this.context = c;
     }
 
-    public void setList(List<GridInfo> list) {
+    public void setList(List<Fruit> list) {
         this.list = list;
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -71,10 +73,15 @@ public class GridAdapter extends BaseAdapter {
             holder = (GridHolder) convertView.getTag();
 
         }
-        GridInfo info = list.get(index);
+        Fruit info = list.get(index);
         if (info != null) {
             holder.appName.setText(info.getName());
-            holder.appImage.setImageResource(info.getImgId());
+            String pinyin = info.getPinyin();
+            int res = convertView.getResources()
+                    .getIdentifier(pinyin, "drawable", parent.getContext().getPackageName());
+            if (res != 0) {
+                holder.appImage.setImageResource(res);
+            }
         }
         return convertView;
     }

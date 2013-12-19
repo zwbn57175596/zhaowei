@@ -39,7 +39,8 @@ public class DBManager {
         ArrayList<Fruit> result = new ArrayList<Fruit>();
         while (c.moveToNext()) {
             String name = new String(c.getBlob(c.getColumnIndex("name")));
-            String desc = new String(c.getBlob(c.getColumnIndex("desc")));
+            byte[] desc_data = c.getBlob(c.getColumnIndex("desc"));
+            String desc = new String(desc_data == null ? "".getBytes() : desc_data);
             String pinyin = new String(c.getBlob(c.getColumnIndex("pinyin")));
 //            String pic = new String(c.getBlob(c.getColumnIndex("pic")));
             result.add(new Fruit(c.getInt(c.getColumnIndex("id")), name, desc, pinyin));
@@ -123,10 +124,11 @@ public class DBManager {
         Cursor c = queryTheCursor();
         while (c.moveToNext()) {
             String name = new String(c.getBlob(c.getColumnIndex("name")));
-            String desc = new String(c.getBlob(c.getColumnIndex("desc")));
+            byte[] desc_data = c.getBlob(c.getColumnIndex("desc"));
+            String desc = new String(desc_data == null ? "".getBytes() : desc_data);
             String pinyin = new String(c.getBlob(c.getColumnIndex("pinyin")));
-            String pic = new String(c.getBlob(c.getColumnIndex("pic")));
-            result.add(new Fruit(c.getInt(c.getColumnIndex("id")), name, desc, pinyin, pic));
+            // String pic = new String(c.getBlob(c.getColumnIndex("pic")));
+            result.add(new Fruit(c.getInt(c.getColumnIndex("id")), name, desc, pinyin));
         }
         c.close();
         return result;

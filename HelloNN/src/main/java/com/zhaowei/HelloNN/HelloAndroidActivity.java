@@ -1,7 +1,9 @@
 package com.zhaowei.HelloNN;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import com.zhaowei.HelloNN.DB.DBManager;
+import com.zhaowei.HelloNN.DB.pojo.Fruit;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -17,68 +19,24 @@ import android.widget.GridView;
 
 public class HelloAndroidActivity extends Activity {
 
+    private DBManager mgr = null;
+    
     private EditText user_Input = null;
     @SuppressWarnings("unused")
     private Button search = null;
     private GridView gridview;
-    private List<GridInfo> list;
+    private List<Fruit> list;
     private GridAdapter adapter;
+    private Intent i;
 
     public void searchFruit(View view) {
         Log.d("SearchFruit", "enter search");
-        // TODO 发送参数并跳转
+
         String userInput = user_Input.getText().toString();
         Log.d("SearchFruit  user input is ", userInput);
-        Intent i = new Intent();
         i.putExtra("userInput", userInput);
-        i.setClass(this, FruitInfoActivity.class);
         startActivity(i);
     }
-
-    // public void queryFruit(View view) {
-    // Cursor c = mgr.queryTheCursor();
-    // startManagingCursor(c); // 托付给activity根据自己的生命周期去管理Cursor的生命周期
-    // CursorWrapper cursorWrapper = new CursorWrapper(c) {
-    // @Override
-    // public String getString(int columnIndex) {
-    // // 将简介前加上年龄
-    // if (getColumnName(columnIndex).equals("info")) {
-    // int age = getInt(getColumnIndex("age"));
-    // return age + " years old, " + super.getString(columnIndex);
-    // }
-    // return super.getString(columnIndex);
-    // }
-    // };
-    // // 确保查询结果中有"_id"列
-    // SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
-    // android.R.layout.simple_list_item_2, cursorWrapper,
-    // new String[] { "name", "info" }, new int[] { android.R.id.text1,
-    // android.R.id.text2 });
-    // ListView listView = (ListView) findViewById(R.id.listView1);
-
-    // listView.setAdapter(adapter);
-    // }
-
-    // public void query(View view) {
-    // Log.d(Constant.LOG_TAG, "enterquery");
-    // List<Fruit> fruits = mgr.query();
-    // ArrayList<Map<String, String>> list = new ArrayList<Map<String,
-    // String>>();
-    // for (Fruit fruit : fruits) {
-    // Log.d("fruit_Data", fruit.getName() + "||" + fruit.getPinyin() + "||" +
-    // fruit.getDesc());
-    //
-    // HashMap<String, String> map = new HashMap<String, String>();
-    // map.put("name", fruit.getName() + "(" + fruit.getPinyin() + ")");
-    // map.put("info", fruit.getDesc());
-    // list.add(map);
-    // }
-    // Log.d(Constant.LOG_TAG, String.valueOf(list.size()));
-    // SimpleAdapter adapter = new SimpleAdapter(this, list,
-    // android.R.layout.simple_list_item_2, new String[] {
-    // "name", "info" }, new int[] { android.R.id.text1, android.R.id.text2 });
-    // listView.setAdapter(adapter);
-    // }
 
     /**
      * Called when the activity is first created.
@@ -93,23 +51,28 @@ public class HelloAndroidActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mgr = new DBManager(this);
+        
+        this.i = new Intent();
+        this.i.setClass(this, FruitInfoActivity.class);
 
         user_Input = (EditText) findViewById(R.id.editText1);
         search = (Button) findViewById(R.id.button1);
 
         gridview = (GridView) findViewById(R.id.gridview);
-        list = new ArrayList<GridInfo>();
-        list.add(new GridInfo("name1", R.drawable.a123));
-        list.add(new GridInfo("name2", R.drawable.cherry));
-        list.add(new GridInfo("name3", R.drawable.kiwi));
-        list.add(new GridInfo("name4", R.drawable.peach));
-        list.add(new GridInfo("name5", R.drawable.lemon));
-        list.add(new GridInfo("name6", R.drawable.peach));
-        list.add(new GridInfo("name6", R.drawable.qiyiguo));
-        list.add(new GridInfo("name7", R.drawable.kiwi));
-        list.add(new GridInfo("name8", R.drawable.cherry));
-        list.add(new GridInfo("name9", R.drawable.cherry));
-        list.add(new GridInfo("name10", R.drawable.lemon));
+        list = mgr.query();
+        
+//        list.add(new Fruit("name1", R.drawable.cherry));
+//        list.add(new Fruit("name2", R.drawable.cherry));
+//        list.add(new Fruit("name3", R.drawable.kiwi));
+//        list.add(new Fruit("name4", R.drawable.peach));
+//        list.add(new Fruit("name5", R.drawable.lemon));
+//        list.add(new Fruit("name6", R.drawable.peach));
+//        list.add(new Fruit("name6", R.drawable.qiyiguo));
+//        list.add(new Fruit("name7", R.drawable.kiwi));
+        // list.add(new GridInfo("name8", R.drawable.cherry));
+        // list.add(new GridInfo("name9", R.drawable.cherry));
+        // list.add(new GridInfo("name10", R.drawable.lemon));
         adapter = new GridAdapter(this);
         adapter.setList(list);
         gridview.setAdapter(adapter);
@@ -117,33 +80,14 @@ public class HelloAndroidActivity extends Activity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // TODO Auto-generated method stub
-                list.get(position);
+                String userInput = list.get(position).getName();
+                Log.d("SearchFruit  user input is ", userInput);
+                Intent i = new Intent();
+                i.putExtra("userInput", userInput);
+                i.setClass(parent.getContext(), FruitInfoActivity.class);
+                startActivity(i);
             }
         });
-
-        // listView = (ListView) findViewById(R.id.listView1);
-        /*
-         * Button button = (Button) findViewById(R.id.button1);
-         * button.setOnClickListener(new OnClickListener() {
-         * 
-         * @Override public void onClick(View arg0) { TextView textView =
-         * (TextView) findViewById(R.id.textView1);
-         * textView.setText("you click me"); } });
-         */
-        // findViewById(R.id.button2).setOnClickListener(new OnClickListener() {
-        // @Override
-        // public void onClick(View arg0) {
-        // Intent intent = new Intent();
-        // intent.setClass(arg0.getContext(), Display.class);
-        // startActivity(intent);
-        // }
-        // });
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
     }
 
     @Override
@@ -151,6 +95,12 @@ public class HelloAndroidActivity extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(com.zhaowei.HelloNN.R.menu.main, menu);
         return true;
+    }
+    
+    @Override
+    protected void onDestroy() {
+        mgr.closeDB();
+        super.onDestroy();
     }
 
 }
