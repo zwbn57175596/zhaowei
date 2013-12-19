@@ -8,10 +8,10 @@ import com.zhaowei.HelloNN.DB.pojo.Fruit;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.os.Build;
 
@@ -20,6 +20,8 @@ public class FruitInfoActivity extends Activity {
     private DBManager mgr = null;
     
     private TextView result = null;
+    
+    private ImageView image = null;
     
     
     
@@ -40,6 +42,7 @@ public class FruitInfoActivity extends Activity {
           searchResult = "亲，偶木有见过这个水果哦。是不是打错字了？";
       } else if (fruits.size() >= 1) {
           searchResult =  fruits.get(0).getName() + "     " + fruits.get(0).getDesc();
+          image.setImageResource(getResources().getIdentifier(fruits.get(0).getPinyin(), "drawable", getPackageName()));
       } else {
           searchResult = "亲，这种水果有点多哈";
       }
@@ -52,9 +55,6 @@ public class FruitInfoActivity extends Activity {
 //      ssb.append("  ");
 //      ssb.append(searchResult);
 //      result.setText(ssb);
-      Drawable d = getResources().getDrawable(R.drawable.apple);
-      d.setBounds(0, 0, 50, 50);
-      result.setCompoundDrawables(d, null, null, null);
       result.setText(searchResult);
       for (Fruit f : mgr.query()) {
           Log.d("change", f.getId().intValue() + "-" + f.getName() + "-" + f.getDesc());
@@ -68,11 +68,12 @@ public class FruitInfoActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mgr = new DBManager(this);
-        result = (TextView) findViewById(R.id.textview2);
         setContentView(R.layout.activity_fruit_info);
         // Show the Up button in the action bar.
         setupActionBar();
+        mgr = new DBManager(this);
+        result = (TextView) findViewById(R.id.textview2);
+        image = (ImageView) findViewById(R.id.imageView1);
     }
 
     /**

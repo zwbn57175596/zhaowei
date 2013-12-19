@@ -43,28 +43,27 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int qiyiguo=0x7f020008;
     }
     public static final class id {
-        public static final int action_settings=0x7f090015;
+        public static final int action_settings=0x7f090014;
         public static final int button1=0x7f090004;
-        public static final int button2=0x7f090007;
         public static final int editText1=0x7f090001;
         public static final int editText2=0x7f090002;
         public static final int editText3=0x7f090003;
-        public static final int imageView1=0x7f09000a;
-        public static final int imageView2=0x7f09000c;
-        public static final int imageView3=0x7f09000d;
-        public static final int imageView4=0x7f09000e;
-        public static final int imageView5=0x7f090010;
-        public static final int imageView6=0x7f090011;
-        public static final int imageView7=0x7f090012;
-        public static final int linearLayout0=0x7f090005;
-        public static final int linearLayout1=0x7f090008;
-        public static final int scrollView0=0x7f090009;
-        public static final int tableRow1=0x7f09000b;
-        public static final int tableRow2=0x7f09000f;
-        public static final int tableRow3=0x7f090013;
-        public static final int tableRow4=0x7f090014;
+        public static final int imageView1=0x7f090006;
+        public static final int imageView2=0x7f09000b;
+        public static final int imageView3=0x7f09000c;
+        public static final int imageView4=0x7f09000d;
+        public static final int imageView5=0x7f09000f;
+        public static final int imageView6=0x7f090010;
+        public static final int imageView7=0x7f090011;
+        public static final int linearLayout0=0x7f090009;
+        public static final int linearLayout1=0x7f090005;
+        public static final int scrollView0=0x7f090008;
+        public static final int tableRow1=0x7f09000a;
+        public static final int tableRow2=0x7f09000e;
+        public static final int tableRow3=0x7f090012;
+        public static final int tableRow4=0x7f090013;
         public static final int textView1=0x7f090000;
-        public static final int textview2=0x7f090006;
+        public static final int textview2=0x7f090007;
     }
     public static final class layout {
         public static final int activity_display=0x7f030000;
@@ -120,8 +119,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int AppTheme=0x7f070001;
         public static final int ButtonBar=0x7f070003;
         public static final int ButtonBarButton=0x7f070004;
-        public static final int FullscreenActionBarStyle=0x7f070005;
+        public static final int FullscreenActionBarStyle=0x7f070006;
         public static final int FullscreenTheme=0x7f070002;
+        public static final int styleName=0x7f070005;
     }
     public static final class styleable {
         /** 
