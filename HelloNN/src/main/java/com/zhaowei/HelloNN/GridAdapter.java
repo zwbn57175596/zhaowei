@@ -81,6 +81,8 @@ public class GridAdapter extends BaseAdapter {
                     .getIdentifier(pinyin, "drawable", parent.getContext().getPackageName());
             if (res != 0) {
                 holder.appImage.setImageResource(res);
+            } else {
+                holder.appImage.setImageResource(R.drawable.search);
             }
         }
         return convertView;

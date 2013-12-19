@@ -11,6 +11,8 @@
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:orientation="horizontal" >
 
         <EditText
@@ -27,41 +29,42 @@
             android:layout_width="0dip"
             android:layout_height="45dp"
             android:layout_weight="0.20"
-            android:paddingBottom="10dp"
             android:background="#00000000"
             android:onClick="searchFruit"
+            android:paddingBottom="10dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/search" />
+            android:src="@drawable/search"
+            tools:ignore="ContentDescription" />
 
     </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/linearLayout0"
+    <LinearLayout
+        android:id="@+id/linearLayout0"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout1"
+        android:orientation="vertical"
+        android:paddingTop="10dp" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:contentDescription="header"
+            android:src="@drawable/apple" />
+
+        <GridView
+            android:id="@+id/gridview"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/linearLayout1"
-            android:orientation="vertical"
-            android:paddingTop="10dp" >
-
-            <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="wrap_content"
-                android:layout_height="200dp"
-                android:contentDescription="header"
-                android:src="@drawable/apple" />
-
-            <GridView
-                android:id="@+id/gridview"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:columnWidth="90dp"
-                android:paddingTop="7dp"
-                android:gravity="center"
-                android:horizontalSpacing="10dp"
-                android:numColumns="auto_fit"
-                android:stretchMode="columnWidth"
-                android:verticalSpacing="10dp" >
-            </GridView>
-        </LinearLayout>
+            android:columnWidth="90dp"
+            android:gravity="center"
+            android:horizontalSpacing="10dp"
+            android:numColumns="auto_fit"
+            android:paddingTop="7dp"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="10dp" >
+        </GridView>
+    </LinearLayout>
 
 </RelativeLayout>

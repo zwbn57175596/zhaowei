@@ -20,7 +20,7 @@ import android.widget.GridView;
 public class HelloAndroidActivity extends Activity {
 
     private DBManager mgr = null;
-    
+
     private EditText user_Input = null;
     @SuppressWarnings("unused")
     private Button search = null;
@@ -52,7 +52,7 @@ public class HelloAndroidActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mgr = new DBManager(this);
-        
+
         this.i = new Intent();
         this.i.setClass(this, FruitInfoActivity.class);
 
@@ -61,18 +61,6 @@ public class HelloAndroidActivity extends Activity {
 
         gridview = (GridView) findViewById(R.id.gridview);
         list = mgr.query();
-        
-//        list.add(new Fruit("name1", R.drawable.cherry));
-//        list.add(new Fruit("name2", R.drawable.cherry));
-//        list.add(new Fruit("name3", R.drawable.kiwi));
-//        list.add(new Fruit("name4", R.drawable.peach));
-//        list.add(new Fruit("name5", R.drawable.lemon));
-//        list.add(new Fruit("name6", R.drawable.peach));
-//        list.add(new Fruit("name6", R.drawable.qiyiguo));
-//        list.add(new Fruit("name7", R.drawable.kiwi));
-        // list.add(new GridInfo("name8", R.drawable.cherry));
-        // list.add(new GridInfo("name9", R.drawable.cherry));
-        // list.add(new GridInfo("name10", R.drawable.lemon));
         adapter = new GridAdapter(this);
         adapter.setList(list);
         gridview.setAdapter(adapter);
@@ -96,7 +84,7 @@ public class HelloAndroidActivity extends Activity {
         getMenuInflater().inflate(com.zhaowei.HelloNN.R.menu.main, menu);
         return true;
     }
-    
+
     @Override
     protected void onDestroy() {
         mgr.closeDB();

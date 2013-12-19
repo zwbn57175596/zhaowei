@@ -43,6 +43,7 @@ public class FruitInfoActivity extends Activity {
       } else if (fruits.size() >= 1) {
           searchResult =  fruits.get(0).getName() + "     " + fruits.get(0).getDesc();
           image.setImageResource(getResources().getIdentifier(fruits.get(0).getPinyin(), "drawable", getPackageName()));
+          this.setTitle(fruits.get(0).getName());
       } else {
           searchResult = "亲，这种水果有点多哈";
       }
@@ -96,6 +97,7 @@ public class FruitInfoActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
         case android.R.id.home:
+            FruitInfoActivity.this.finish();
             // This ID represents the Home or Up button. In the case of this
             // activity, the Up button is shown. Use NavUtils to allow users
             // to navigate up one level in the application structure. For
