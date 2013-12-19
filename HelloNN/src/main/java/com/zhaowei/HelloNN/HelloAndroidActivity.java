@@ -1,19 +1,28 @@
 package com.zhaowei.HelloNN;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 
 public class HelloAndroidActivity extends Activity {
 
     private EditText user_Input = null;
     @SuppressWarnings("unused")
     private Button search = null;
+    private GridView gridview;
+    private List<GridInfo> list;
+    private GridAdapter adapter;
 
     public void searchFruit(View view) {
         Log.d("SearchFruit", "enter search");
@@ -25,7 +34,7 @@ public class HelloAndroidActivity extends Activity {
         i.setClass(this, FruitInfoActivity.class);
         startActivity(i);
     }
-    
+
     // public void queryFruit(View view) {
     // Cursor c = mgr.queryTheCursor();
     // startManagingCursor(c); // 托付给activity根据自己的生命周期去管理Cursor的生命周期
@@ -88,6 +97,31 @@ public class HelloAndroidActivity extends Activity {
         user_Input = (EditText) findViewById(R.id.editText1);
         search = (Button) findViewById(R.id.button1);
 
+        gridview = (GridView) findViewById(R.id.gridview);
+        list = new ArrayList<GridInfo>();
+        list.add(new GridInfo("name1", R.drawable.a123));
+        list.add(new GridInfo("name2", R.drawable.cherry));
+        list.add(new GridInfo("name3", R.drawable.kiwi));
+        list.add(new GridInfo("name4", R.drawable.peach));
+        list.add(new GridInfo("name5", R.drawable.lemon));
+        list.add(new GridInfo("name6", R.drawable.peach));
+        list.add(new GridInfo("name6", R.drawable.qiyiguo));
+        list.add(new GridInfo("name7", R.drawable.kiwi));
+        list.add(new GridInfo("name8", R.drawable.cherry));
+        list.add(new GridInfo("name9", R.drawable.cherry));
+        list.add(new GridInfo("name10", R.drawable.lemon));
+        adapter = new GridAdapter(this);
+        adapter.setList(list);
+        gridview.setAdapter(adapter);
+        gridview.setOnItemClickListener(new OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // TODO Auto-generated method stub
+                list.get(position);
+            }
+        });
+
         // listView = (ListView) findViewById(R.id.listView1);
         /*
          * Button button = (Button) findViewById(R.id.button1);
@@ -97,14 +131,14 @@ public class HelloAndroidActivity extends Activity {
          * (TextView) findViewById(R.id.textView1);
          * textView.setText("you click me"); } });
          */
-//        findViewById(R.id.button2).setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View arg0) {
-//                Intent intent = new Intent();
-//                intent.setClass(arg0.getContext(), Display.class);
-//                startActivity(intent);
-//            }
-//        });
+        // findViewById(R.id.button2).setOnClickListener(new OnClickListener() {
+        // @Override
+        // public void onClick(View arg0) {
+        // Intent intent = new Intent();
+        // intent.setClass(arg0.getContext(), Display.class);
+        // startActivity(intent);
+        // }
+        // });
     }
 
     @Override

@@ -41,8 +41,8 @@ public class DBManager {
             String name = new String(c.getBlob(c.getColumnIndex("name")));
             String desc = new String(c.getBlob(c.getColumnIndex("desc")));
             String pinyin = new String(c.getBlob(c.getColumnIndex("pinyin")));
-            String pic = new String(c.getBlob(c.getColumnIndex("pic")));
-            result.add(new Fruit(c.getInt(c.getColumnIndex("id")), name, desc, pinyin, pic));
+//            String pic = new String(c.getBlob(c.getColumnIndex("pic")));
+            result.add(new Fruit(c.getInt(c.getColumnIndex("id")), name, desc, pinyin));
         }
         return result;
     }
