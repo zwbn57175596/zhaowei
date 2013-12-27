@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Page not found &middot; 高德导航</title>
+<style type="text/css" media="screen">
+  body {
+    background-color: #f1f1f1;
+    margin: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  .container { margin: 50px auto 40px auto; width: 600px; text-align: center; }
+  a { color: #4183c4; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1 { width: 800px; position:relative; left: -100px; letter-spacing: -1px; line-height: 60px; font-size: 60px; font-weight: 100; margin: 0px 0 50px 0; text-shadow: 0 1px 0 #fff; }
+  p { color: rgba(0, 0, 0, 0.5); margin: 20px 0; line-height: 1.6; letter-spacing: 0.3em;}
+  .header {
+    height: 80px;
+    background-color: #393939;
+  }
+  .nv {
+    padding-top: 15px;
+    margin: 0px auto 0px auto;
+    width: 960px;
+  }
+  .suggestions {
+     margin-top: 35px;
+     color: #ccc;
+   }
+  .suggestions a {
+    color: #666666;
+    font-weight: 200;
+    font-size: 14px;
+    margin: 0 10px;
+  }
+  .logo { display: inline-block; margin-top: 80px; }
+  
+  img.grayscale {
+   filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
+   filter: gray; /* IE6-9 */
+   -webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+  }
+  img.grayscale:hover {
+    filter: none;
+    -webkit-filter: grayscale(0%);
+  }
+</style>
+</head>
+<body>
+    <div class="header">
+        <div class="nv">
+            <a href="/"><img alt="logo" src="http://c.autonavi.com/club/images/logo.png"></a>
+        </div>
+    </div>
+    <div class="container">
+        <h1>404</h1>
+        <p><strong>页面没有找到</strong></p>
+        
+        <div class="suggestions">
+            <a href="http://c.autonavi.com/club">高德导航首页</a>
+        </div>
+        
+        <a href="/" class="logo"><img class="grayscale" alt="" src="http://c.autonavi.com/club/images/logo_ico.png"></a>
+    </div>
+</body>
+</html>

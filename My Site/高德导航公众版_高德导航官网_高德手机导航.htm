@@ -1,0 +1,566 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0050)http://10.2.167.146:8081/club/blackberry/index.jsp -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+
+<title>高德导航公众版_高德导航官网_高德手机导航</title>
+<meta name="Author" content="高德软件有限公司">
+<meta name="Description" content="高德手机导航官方网站。高德导航公众版:由高德软件出品，为了满足车载用户的出行导航需求，而量身定制的移动客户端软件。主要适用于Android、iPhone、Bada等移动智能操作系统。">
+<meta name="Keywords" content="b ,免费导航,离线导航,高德,高德导航,高德手机导航,GPS,GPS导航,Androd 导航，iPhone 导航,高德导航公众版">
+<meta name="Language" content="zh-CN">
+<meta name="publisher" content="c.autonavi.com 高德软件有限公司">
+<meta name="copyright" content="Copyright ? 2013 AutoNavi. All Rights Reserved | 京ICP备07017245号-5">
+<!--[if lt IE 6]>
+<script type="text/javascript" src="/club/iepng/iepngfix_tilebg.js"></script> 
+*{behavior: url(/club/iepng/iepngfix.htc)}
+<![endif]-->
+<link rel="shortcut icon" href="http://10.2.167.146:8081/club/favicon.ico">
+<link href="./高德导航公众版_高德导航官网_高德手机导航_files/base.css" rel="stylesheet" type="text/css">
+
+<script async="" src="./高德导航公众版_高德导航官网_高德手机导航_files/analytics.js"></script><script src="./高德导航公众版_高德导航官网_高德手机导航_files/jquery-1.8.2.min.js"></script>
+<script src="./高德导航公众版_高德导航官网_高德手机导航_files/slides.min.jquery2.js"></script>
+<script src="./高德导航公众版_高德导航官网_高德手机导航_files/main.js"></script>
+<script src="./高德导航公众版_高德导航官网_高德手机导航_files/index.js"></script>
+<script src="./高德导航公众版_高德导航官网_高德手机导航_files/jquery.boxy.js"></script>
+
+<script src="./高德导航公众版_高德导航官网_高德手机导航_files/elect2.js" type="text/javascript"></script>
+<script src="./高德导航公众版_高德导航官网_高德手机导航_files/engine.js"></script>
+<script src="./高德导航公众版_高德导航官网_高德手机导航_files/util.js"></script>
+<script src="./高德导航公众版_高德导航官网_高德手机导航_files/checkIsPayed.js"></script>
+<script src="./高德导航公众版_高德导航官网_高德手机导航_files/phones.js"></script>
+
+<script language="javascript">
+var _boxy;
+var baseurl = "";
+var info;
+var _phone_brand;
+var _phone;
+var dataArray=new Array;
+function loadXML(){
+    $.get("24.1.2010.0003.xml",function(data){
+        $(data).find('info').each(function(){   
+            info = $(this);
+            baseurl = info.find('baseurl').text(); 
+            $(info).find('required').each(function(){
+                var required = $(this);
+                $(required).find('item').each(function(){
+                    
+                });
+            });
+             var index=0;
+            $(info).find('optional').each(function(){
+                var optional = $(this);
+                $(optional).find('item').each(function(){
+                    var item = $(this);
+                    var type = item.attr("type")+"";
+                    if(type=='1'){
+                        
+                        
+                        
+                    }else if(type=='0'){
+                        if($(item).find('city').size()>0){
+                            var items = '<li onClick="initCity(this,'+index+')">';
+                            items += item.attr("name");
+                            items += '</li>';
+                            $("#cityList").append(items);
+                            var tempArray = Array();
+                            var tempIndex =0;
+                            $(item).find('city').each(function(){
+                                var city = $(this);
+                                var obj=new Object;
+                                obj.tname=city.attr("name");
+                                obj.suburl=baseurl+city.find("suburl").text();
+                                var size = parseInt(city.find("size").text()) ;
+                                if(size/(1024*1024)<1){
+                                    obj.size = (size/1024).toFixed(2)+"K";
+                                }else{
+                                    obj.size = (size/(1024*1024)).toFixed(2)+"M";
+                                }
+                                tempArray[tempIndex]=obj;
+                                tempIndex++;
+                            });
+                            dataArray[index]=tempArray;
+                            index++;
+                        }else if($(item).find('suburl').size()>0){
+                            var tempArray = Array();
+                            var name= item.attr("name");
+                            var items = '<li onClick="initCity(this,'+index+')">';
+                            items += name;
+                            items += '</li>';
+                            $("#cityList").append(items);
+                            var obj=new Object;
+                            obj.tname=name;
+                            obj.suburl=baseurl+item.find("suburl").text();
+                            var size = parseInt(item.find("size").text()) ;
+                            if(size/(1024*1024)<1){
+                                obj.size = (size/1024).toFixed(2)+"K";
+                            }else{
+                                obj.size = (size/(1024*1024)).toFixed(2)+"M";
+                            }
+                            tempArray[0]=obj;
+                            dataArray[index]=tempArray;
+                            index++;
+                        }
+                    }
+                    
+                });
+            });   
+        });
+    });
+}
+
+function initOne(){
+    $("#_one").html("");
+    $("#_one").append('<option value="-1">请选择手机品牌</option>');
+    for (var i in phones) {
+        if(phones[i].phones.length>0){
+        $("#_one").append('<option value="'+phones[i].nameen+'">'+phones[i].name+'</option>');
+        var temp="makeshi('"+phones[i].nameen+"')";
+        $("#_alert_one").append('<a id="_a_'+phones[i].nameen+'" onclick="'+temp+'" href="#">'+phones[i].name+'</a>');
+        }
+    }
+}
+
+function makeshi(id){
+    $("#_span_msg").html("请选择手机型号");
+    $("#imgBox").hide();
+    if(_phone_brand!=undefined){
+        $("#_a_"+_phone_brand.nameen).attr("style","background:#F2F2F2;color:#000;");
+    }
+    $("#_a_"+id).attr("style","background:#4b4b4b;color:#fff;");
+    $("#imgBox").html('<img id="phone_img" src="/club/images/zwtp.png" width="79" height="100" />');
+    if(id=="-1"){
+        $("#show_resurt").hide();
+        _phone_brand = undefined;
+        return;
+    }
+    for (var i in phones) {
+        var phonesObject = phones[i];
+        if(phonesObject.nameen==id){
+            _phone_brand =phonesObject;
+            var phoneArray=_phone_brand.phones;
+            $("#_dl_two").html("");
+            var _phoneArray = new Array();
+            for (var j in phoneArray){
+                var phoneObject = phoneArray[j];
+                $("#_apan_title").html(_phone_brand.name);
+                if(phoneObject.osid==2&&_phoneArray[phoneObject.name]==null){
+                    _phoneArray[phoneObject.name]=1;
+                    var temp="makeshi1('"+phoneObject.id+"')";
+                    $("#_dl_two").append('<dd id="_dd_'+phoneObject.id+'" onclick="'+temp+'">'+phoneObject.name+'</dd>');
+                }
+            }
+            stripeTables();
+            break;
+        }
+    }
+    if(_boxy==undefined){
+        _boxy = new Boxy($("#pop_page"), {title:"&nbsp;",closeText:"关闭", cache:false, unloadOnHide:false,modal:true,closeable:true,afterHide:function(){$("#_one").show();_boxy=undefined;}});
+        $("#_one").hide();
+        $("#_alert_one").scrollTop($("#_a_"+id).position().top-75);
+    }
+}
+
+function makeshi1(id){
+    stripeTables();
+    $("#_dd_"+id).attr("style","background:#4b4b4b;color:#fff;");
+    var phoneArray=_phone_brand.phones;
+    for (var j in phoneArray){
+        if(phoneArray[j].id==id){
+            _phone = phoneArray[j];
+            $("#_apan_title").html(_phone_brand.name+" | "+_phone.name);
+            if(_phone.img==""){
+                $("#phone_img").attr('src','/club/images/zwtp.png');
+            }else{
+                $("#phone_img").attr('src','/club/images/images_phone/'+_phone.img);
+            }
+            $("#imgBox").show();
+            DrawImg(80,100,_phone.imgw,_phone.imgh);
+            if(_phone.yuzhuang=="yes"){
+                $("#_span_msg").html("<span style='color:#FF0000;font-size:12px;'>您的手机为Android操作系统，<br>可能已经预装高德导航，<br>同时可以选择高德导航公众版。<br><a href='http://mlbsdown.autonavi.com/navi/Autonavi.apk' ><span style='float:left;text-align:center;line-height:29px;display:block;background:url(/club/images/botton.png);width:72px;height:29px;'>下载公众版</span></a><a href='/club/update/index.jsp?brandname="+_phone_brand.nameen+"' ><span style=' margin-left:10px;float:left;text-align:center;line-height:29px;display:block;background:url(/club/images/botton.png);width:72px;height:29px;'>查看预装版</span></a></span>");
+            }else{
+                $("#_span_msg").html("<span style='color:#00A0E9;font-size:12px;'>您的手机为Android操作系统，<br>可以选Android版本的高德导航。<br><br><span style='text-align:center;line-height:29px;display:block;background:url(/club/images/botton.png);color:red;color:red;width:72px;height:29px;'><a href='http://mlbsdown.autonavi.com/navi/Autonavi.apk'>下载公众版</a></span></span>");
+            }
+        }
+    }
+    
+}
+
+$(window).load(function() {
+    initOne();
+    loadXML();    
+}); 
+
+
+
+    var    orderType;
+    
+
+    
+    datadown = function ( path ) {
+        if ( checkLogin() ) {
+            window.location.href = path;
+        }
+    };
+    
+    function createXmlHttp(){
+             var xmlreq=false;
+             if(window.XMLHttpRequest){
+              xmlreq=new XMLHttpRequest();
+             }else if(window.ActiveXObject){
+              try{
+               xmlreq=new ActiveXObject("Msxml2.XMLHTTP");
+              }catch(e1){
+               try{
+                xmlreq=new ActiveXObject("Microsoft.XMLHTTP");
+               }catch(e2){}
+              }
+             }
+             return xmlreq;
+            }
+
+function downloadFile(url) {
+            var elemIF = document.createElement("iframe");
+            elemIF.src = url;
+            elemIF.style.display = "none";
+            document.body.appendChild(elemIF);
+        } 
+
+function initCity(img,id){
+    var cityList=document.getElementById("cityList");
+    var liList=cityList.getElementsByTagName("li");
+    for(var i=0; i<liList.length;i++){
+        if(liList[i].className=="li_bc"){
+            liList[i].className="";
+        }
+    }
+    img.className="li_bc";
+    var objArray=dataArray[id];
+    $("#mapDataList").html("");
+    for(var index=0;index<objArray.length;index++){
+        var obj = objArray[index];
+        var temp ="<tr><td  style='width:1px;'></td><td style='width:200px;'>"+obj.tname+"</td><td style='width:50px;text-align:right;'>"+obj.size+"</td><td ><a href='"+obj.suburl+"' class='white'>下载</a></td></tr>";
+        $("#mapDataList").append(temp);
+    }
+    
+}
+
+function DrawImg(boxWidth,boxHeight,imgWidth,imgHeight){
+    //比较imgBox的长宽比与img的长宽比大小
+    if((boxWidth/boxHeight)>=(imgWidth/imgHeight)){
+        //重新设置img的width和height
+        $("#phone_img").width((boxHeight*imgWidth)/imgHeight-2);
+        $("#phone_img").height(boxHeight-2);
+    }else{
+        //重新设置img的width和height
+        $("#phone_img").width(boxWidth-2);
+        $("#phone_img").height((boxWidth*imgHeight)/imgWidth-2);
+    }
+}
+function showMapData(){
+    new Boxy($("#map_page"), {title:"&nbsp;",closeText:"关闭", cache:false, unloadOnHide:false,modal:true,closeable:true,afterHide:function(){show_overflow();}});
+}
+$(document).ready(function() {
+    $("#qr_span").hide();
+    $("#download_apk").mouseover(function() {
+        $("#qr_span").fadeIn();
+    });
+    $("#download_apk").mouseout(function() {
+        $("#qr_span").fadeOut();
+    });
+});
+</script>
+<style>
+/**下载页面的图片样式控制开始*/
+.pagination { width:200px; margin:12px auto; text-align:center; position:relative; top:100px; left:60px; z-index:1000; }
+.pagination li { width:14px; height:14px; display:inline-block; padding:0px 3px; float:left; cursor:pointer; }
+.pagination li.current a { background-position:0px -19px; overflow:hidden; display:block; }
+.pagination li a { display:block; width:11px; height:0px; padding-top:16px; background:url(../images/pagination.png);_background:url(../images/pagination.gif); background-position:0 0; background-position:0 0; float:left; overflow:hidden; }
+#pSlide {}
+.slides_container { }
+.slides_container div a { outline:none; }
+/**下载页面图片滚动模块的样式控制结束*/
+#autonavi_homebc div .main .maincon .mr .mr_one.mr_three ol li {
+	font-weight: bolder;	
+}
+</style>
+</head>
+<body id="autonavi_homebc">
+<div id="pop_page" style=" display:none; margin-top:0px; margin-bottom:0px; padding:0px;">
+  <div class="brand_list">
+    <h1>品牌</h1>
+         <div id="_alert_one" class="bran_auto"><a id="_a_samsung" onclick="makeshi(&#39;samsung&#39;)" href="http://10.2.167.146:8081/club/blackberry/index.jsp#">三星</a><a id="_a_moto" onclick="makeshi(&#39;moto&#39;)" href="http://10.2.167.146:8081/club/blackberry/index.jsp#">摩托罗拉</a><a id="_a_htc" onclick="makeshi(&#39;htc&#39;)" href="http://10.2.167.146:8081/club/blackberry/index.jsp#">HTC</a><a id="_a_sharp" onclick="makeshi(&#39;sharp&#39;)" href="http://10.2.167.146:8081/club/blackberry/index.jsp#">夏普</a><a id="_a_lg" onclick="makeshi(&#39;lg&#39;)" href="http://10.2.167.146:8081/club/blackberry/index.jsp#">LG</a><a id="_a_zte" onclick="makeshi(&#39;zte&#39;)" href="http://10.2.167.146:8081/club/blackberry/index.jsp#">中兴</a><a id="_a_dell" onclick="makeshi(&#39;dell&#39;)" href="http://10.2.167.146:8081/club/blackberry/index.jsp#">戴尔</a><a id="_a_philips" onclick="makeshi(&#39;philips&#39;)" href="http://10.2.167.146:8081/club/blackberry/index.jsp#">飞利浦</a><a id="_a_okwap" onclick="makeshi(&#39;okwap&#39;)" href="http://10.2.167.146:8081/club/blackberry/index.jsp#">英华达</a><a id="_a_oppo" onclick="makeshi(&#39;oppo&#39;)" href="http://10.2.167.146:8081/club/blackberry/index.jsp#">OPPO</a><a id="_a_huawei" onclick="makeshi(&#39;huawei&#39;)" href="http://10.2.167.146:8081/club/blackberry/index.jsp#">华为</a><a id="_a_se" onclick="makeshi(&#39;se&#39;)" href="http://10.2.167.146:8081/club/blackberry/index.jsp#">索爱</a><a id="_a_huaheng" onclick="makeshi(&#39;huaheng&#39;)" href="http://10.2.167.146:8081/club/blackberry/index.jsp#">华恒智器</a></div>
+  </div>
+  <div class="model_list" id="model_list">
+    <h1><span id="close"></span>型号</h1>
+    <dl id="_dl_two" style="margin-left:0px;"></dl>
+    <div class="mod_infor">
+      <div id="imgBox" style="text-align: center; display: none;width:80px; height:100px; overflow:hidden;float:right; text-align:center; margin-top:5px;">
+    <img id="phone_img" src="./高德导航公众版_高德导航官网_高德手机导航_files/zwtp.png" width="80" height="100">
+    </div>
+      <p><span class="darkgray" id="_apan_title" style=" font-weight:bold;"></span><br>
+    <span id="_span_msg" style="width:50px; "></span></p></div>
+  </div>
+</div>
+
+
+<div id="map_page" style=" display:none; margin-top:0px; margin-bottom:0px; padding:0px;">
+
+  <div id="city_one">
+    <h2>请确认分城市下载前已经下载好基础资源包。</h2>
+    <p>
+     <a href="http://mlbsdown.autonavi.com/mobilenavi/android60/13Q30003/V72/alldata/autonavidata60.zip">
+       <img src="./高德导航公众版_高德导航官网_高德手机导航_files/jczyb.png" width="105" height="27" align="absmiddle">
+     </a>&nbsp;&nbsp;&nbsp;大小：143MB
+    </p>
+  </div>
+  <div id="city_tow">
+    <h2>下载分城市地图数据：</h2>
+    <div id="cit_list">
+      <ul id="cityList"></ul>
+    </div>
+    <div class="city_infor" style="width:380px;">
+      <table id="mapDataList">
+      </table>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div id="city_three">
+    <h2>请安装到手机并重启地图软件，安装方法请参考：<p><a href="http://10.2.167.146:8081/club/phonesteward/index.jsp#003"><img src="./高德导航公众版_高德导航官网_高德手机导航_files/zhsm.png" width="69" height="27"></a></p></h2>
+  </div>
+</div>
+<!--nav_box-->
+
+
+
+
+
+
+
+<script src="./高德导航公众版_高德导航官网_高德手机导航_files/jquery.backgroundpos.js" type="text/javascript"></script>
+<script src="./高德导航公众版_高德导航官网_高德手机导航_files/menu.js" type="text/javascript"></script>
+<script src="./高德导航公众版_高德导航官网_高德手机导航_files/out.js" type="text/javascript"></script>
+<!--[if IE 6]>
+<script type="text/javascript" src="/club/js3/DD_belatedPNG_0.0.8a.js"></script>
+<script type="text/javascript">
+    DD_belatedPNG.fix('div, ul, img, li, input , a ,span');
+</script>
+<![endif]--> 
+<!--下面的是IE6,7,8hack的CSS文件-->
+<!--[if lt IE 9]><link rel="stylesheet" href="/club/css3/style-sml.css" /><![endif]-->
+<!--[if gt IE 9]><link rel="stylesheet" href="/club/css3/style-big2.css" /><![endif]-->
+<script language="javascript">
+var realpath = "";
+function showLogin(realPath){
+	realpath = realPath;
+	Boxy.load("/club/common/success.jsp?realPath="+realPath, {title:"&nbsp;",closeText:"关闭", cache:false, unloadOnHide:true,modal:true,closeable:true, 
+		afterShow:function(){
+			// todo
+	}});
+}
+</script>
+<div class="top">
+    <div class="cent">
+	<a class="logo" href="http://10.2.167.146:8081/club/"></a>
+    <div class="header">
+        
+            
+            
+                <p class="language"><a id="btn_poplogin" href="http://10.2.167.146:8081/club/common/registe.jsp?registType=sales&realPath=/club">注册</a><span> 
+                | </span><a href="http://10.2.167.146:8081/club/blackberry/index.jsp#" onclick="showLogin();">登录</a></p>
+            
+        
+         <ul class="menu" style="background-position: 71px 100%;">
+        	<li class=""><a href="http://10.2.167.146:8081/club/">首页</a></li>
+            <li class="current first"><a href="http://10.2.167.146:8081/club/android">下载</a></li>
+            <li class=""><a style="width:100px" href="http://10.2.167.146:8081/club/scpoi">我的导航<img style="float:right; margin:-4px 0 0 -24px;_margin:-22px 0 0 -24px;+margin:-22px 0 0 -24px;" src="./高德导航公众版_高德导航官网_高德手机导航_files/news.gif"></a></li>
+            <li class=""><a style="width:100px" href="http://10.2.167.146:8081/club/phonesteward">玩转导航</a></li>
+            <li class=""><a style="width:100px" href="http://10.2.167.146:8081/club/common/linkus.jsp">联系我们</a></li>
+            <li class="li_3"><a class="noclick" href="http://10.2.167.146:8081/club/blackberry/index.jsp#" target="_blank">更多<img align="absmiddle" src="./高德导航公众版_高德导航官网_高德手机导航_files/more2.png"></a>
+                 <dl class="li_3_content">
+                	<dd><a href="http://www.amap.com/" target="_blank">高德地图</a></dd>
+                    <dd><a href="http://api.amap.com/" target="_blank">地图API</a></dd>
+                    <dd><a href="http://bbs.amap.com/" target="_blank">高德社区</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+    <div style="clear:both;"></div>
+    </div>
+</div>
+<div class="yinying"></div>
+
+<div id="page_top"></div>
+<!--nav_box-->
+
+<!--二级导航开始-->
+<div class="nav_2">
+    <div class="nav_2con">
+        <div class="nav_2ml"><p class="tabin"><strong>公众版下载</strong>个人用户最佳选择，<a href="http://10.2.167.146:8081/club/common/aq.jsp?id=17#17">什么是公众版？</a></p></div>
+        <a href="http://10.2.167.146:8081/club/update/"><div class="nav_2mr"><p><strong>预装版下载</strong>手机/PAD出厂时已经内置正版高德导航软件。什么是预装版？</p></div></a>
+        <p class="clr"></p>
+    </div>
+</div>
+<!--二级导航结束-->
+
+<div style="background:#fff; width:960px; margin:0 auto; padding:0 15px;">
+    <!--三级导航开始-->
+    
+
+
+<div class="nav_3">
+	<ul>
+    	<li><a href="http://10.2.167.146:8081/club/android">Android</a></li>
+    	
+        <li><a href="http://itunes.apple.com/cn/app/id324101974?mt=8" target="_blank">iPhone</a></li>
+        <li><a href="http://www.windowsphone.com/zh-cn/store/app/%E9%AB%98%E5%BE%B7%E5%AF%BC%E8%88%AA/a8078319-139a-4238-a387-824b5d18c61d" target="_blank">Windows Phone 8</a></li>
+    </ul>
+    <p class="clr"></p>
+    
+</div>
+
+
+    <!--三级导航开始-->
+    <!--主体部分-->
+<div class="main" style="margin-top: 30px; color: rgba(255,255,255,1);">
+    <!--版本内容介绍-->
+    <div class="maincon">
+      <!--main_ml strat-->
+      <div class="ml">
+        <div class="flash" id="pSlide" style="background:url(../images/club_blackberry/hd_bj.jpg) no-repeat; width:251px;height:523px;"> 
+          <div id="slides">
+            <div class="slides_container" style="width: 221px; height: 376px; overflow: hidden; top: 66px; left: 10px; position: relative; margin: 0px auto;">
+               <div class="slides_control" style="position: relative; width: 663px; height: 334px; left: -221px;"><div style="position: absolute; top: 0px; left: 221px; z-index: 0; width: 1271px; display: none;"><img src="./高德导航公众版_高德导航官网_高德手机导航_files/img01.jpg" width="200" height="334"></div><div style="position: absolute; top: 0px; left: 221px; z-index: 0; display: none; width: 1271px;"><img src="./高德导航公众版_高德导航官网_高德手机导航_files/img02.jpg" width="200" height="334"></div><div style="position: absolute; top: 0px; left: 221px; z-index: 5; display: block; width: 1271px;"><img src="./高德导航公众版_高德导航官网_高德手机导航_files/img03.jpg" width="200" height="334"></div><div style="position: absolute; top: 0px; left: 221px; z-index: 0; display: none; width: 1271px;"><img src="./高德导航公众版_高德导航官网_高德手机导航_files/img04.jpg" width="200" height="334"></div></div> 
+               
+                
+                
+            </div> 
+          <ul class="pagination"><li class=""><a href="http://10.2.167.146:8081/club/blackberry/index.jsp#0">1</a></li><li class=""><a href="http://10.2.167.146:8081/club/blackberry/index.jsp#1">2</a></li><li class="current"><a href="http://10.2.167.146:8081/club/blackberry/index.jsp#2">3</a></li><li><a href="http://10.2.167.146:8081/club/blackberry/index.jsp#3">4</a></li></ul></div>
+        </div>
+      </div>
+      <!--main_ml end-->
+      <!--main_mr strat-->
+      <div class="mr">
+        <div class="mr_tit">
+          <div class="club_platform_title">高德导航公众版<img src="./高德导航公众版_高德导航官网_高德手机导航_files/icon.jpg" width="170" height="35" align="absmiddle"></div>
+          <p>
+           当前版本：<span style=" font-weight:bold;">V6.0</span><br>
+           更新日期：<span style=" font-weight:bold; ">2013-11-29</span><br>
+           设备要求：适用于BlackBerry Z10分辨率768*1280 <br>
+          </p>
+        </div>
+        <div class="mr_one">
+			<h2 style="font-size:14px; font-weight:bold; color:#000; ">&nbsp;1. 下载程序安装文件</h2>
+            <p style="color:red;">请在手机客户端“BlackBerry World”搜索“高德导航”下载并完成安装</p>
+        </div>
+        <div id="qr_span" style="display: none;">
+           <img alt="qr" style="width:250px; height:250px; margin-left: 70px; margin-top: 5px; border: 2px solid;" src="./高德导航公众版_高德导航官网_高德手机导航_files/android_v72_qr.png">
+        </div>
+        <div class="mr_one mr_two">
+          <h2 style="font-size:14px; font-weight:bold; color:#000;">&nbsp;2. 下载地图文件<span style="font-size:12px; color: #666666;">（V24.1.2010.0003）</span></h2>
+          <div class="mr_twoml" style="margin-left:0px;">
+            <a href="http://mlbsdown.autonavi.com/mobilenavi/BB10/13Q10005/alldata/autonavi.zip">全国地图下载</a>
+            <span>大小：2.79G</span>
+          </div>
+          <div class="mr_twoml">
+            <a href="http://10.2.167.146:8081/club/blackberry/index.jsp#" onclick="no_overflow();showMapData();">分城市地图下载</a>
+              <span>基础资源包：143M</span>
+          </div>
+        </div>
+        <div class="mr_one mr_three">
+          <h2 style="font-size:14px; font-weight:bold; color:#000;">&nbsp;3. 安装并运行高德导航</h2>
+          <ol type="A">
+            <li><a href="http://c.autonavi.com/club/phonesteward/index.jsp?s_id=002#map_001">客户端直接下载</a>&nbsp;（推荐） <br/><p align="left">在地图页面点开&ldquo;主菜单&rdquo;选择&ldquo;数据管理&rdquo;选中您需要的城市，完成下载，重新启动导航即可。 <br /> 注：下载地图数据需要较大流量，建议使用WLAN或WIFI网络。 </p></li>
+            <li><a href="http://c.autonavi.com/club/phonesteward/index.jsp?s_id=002#map_002">网站下载全国地图</a>&nbsp;<br/<p align="left">点击&ldquo;全国地图下载&rdquo;下载autonavi.zip压缩包，解压后获得autonavi文件夹。 <br />注：解压时选中autonavi.zip右键菜单选择&ldquo;解压到当前文件夹&rdquo; </p></li>
+            <li><a href="http://c.autonavi.com/club/phonesteward/index.jsp?s_id=002#map_003">网站下载分城市地图</a><br/><p align="left">城市数据下载，选择需要下载的城市得到不同ZIP压缩包，解压后获取data文件夹， 复制data文件夹直接放入autonavi\navidata\文件夹下。</p></li>
+          </ol>
+        </div> 
+        <div class="mr_one mr_three">
+          <h2 style="font-size:14px; font-weight:bold; color:#000;">&nbsp;4. 下载用户手册</h2>
+          <p><a href="http://mlbsdown.autonavi.com/mobilenavi/BB10/BlackBerry10.pdf" style="color:#06F">BlackBerry10 高德导航用户手册</a></p>
+        </div>
+      </div>
+    <!--main_mr end-->
+    <p class="clr"></p>
+    </div>
+    <!--版本内容介绍-->
+
+    <p class="clr"></p>
+    <div style="height:50px; width:100%"></div>
+ </div>
+    <!--主体部分-->
+</div>
+
+
+
+<script language="JavaScript">  
+<!--   
+/**   
+ *    
+ * @param {} sURL 收藏链接地址   
+ * @param {} sTitle 收藏标题   
+ */   
+function AddFavorite(sURL, sTitle) {   
+    try {   
+        window.external.addFavorite(sURL, sTitle);   
+    } catch (e) {   
+        try {   
+            window.sidebar.addPanel(sTitle, sURL, "");   
+        } catch (e) {   
+            alert("加入收藏失败，请使用Ctrl+D进行添加");
+        }   
+    }   
+}   
+function clubLogAction(type,fileName,info){
+	window.open("/club/android/log.jsp?type="+type+"&fileName="+fileName+"&info="+info,"log_frame");
+}
+//-->  
+
+</script>
+<div class="footer">
+	<div class="footet_nav">
+    	<p>
+        	<span style="color:#FFF; ">首页</span>
+            <a href="http://10.2.167.146:8081/club/news/newslist.jsp">最新资讯</a>
+            <a onclick="AddFavorite(window.location,document.title)" href="http://10.2.167.146:8081/club/blackberry/index.jsp#">收藏本页</a>
+        </p>
+        <p>
+        	<span style="color:#FFF; ">下载</span>
+            <a href="http://10.2.167.146:8081/club/android/">公众版</a>
+            <a href="http://10.2.167.146:8081/club/update/">预装版</a>
+            <a href="http://10.2.167.146:8081/club/hisversions/">历史版本</a>
+        </p>
+        <p>
+        	<span style="color:#FFF; ">玩转导航</span>
+            <a href="http://10.2.167.146:8081/club/phonesteward">使用帮助</a>
+            <a href="http://10.2.167.146:8081/club/common/aq.jsp">常见问题</a>
+        </p>
+        <p>
+        	<span style="color:#FFF; ">联系我们</span>
+            <a href="http://10.2.167.146:8081/club/common/linkus.jsp">联系我们</a>
+            <a href="http://weibo.com/autonavigation" target="_blank">导航微博</a>
+        </p>
+        <p class="footer_Plast">
+        	<span style="color:#FFF; ">关于高德</span>
+        	<a href="http://10.2.167.146:8081/club/common/about_autonavi.jsp" target="_blank">关于高德</a>
+            <a href="http://www.autonavi.com/" target="_blank">公司官网</a>
+            <a href="http://www.autonavi.com/cn/MS_4.html" target="_blank">隐私和保护</a>
+            <a href="http://www.autonavi.com/cn/MS_5.html" target="_blank">法律声明</a> 
+        </p>
+        <div class="clr"></div>
+    </div>
+    <p>Copyright ©2013 高德软件 AutoNavi. All Rights Reserved | 京ICP备07017245号-5 | <script src="./高德导航公众版_高德导航官网_高德手机导航_files/stat.php"></script><script src="./高德导航公众版_高德导航官网_高德手机导航_files/core.php" charset="utf-8" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=5728493" target="_blank" title="站长统计">站长统计</a></p>
+</div>
+<script type="text/javascript">
+// Google Analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-46212452-1', 'anav.com');
+  ga('send', 'pageview');
+</script>
+
+</body></html>
