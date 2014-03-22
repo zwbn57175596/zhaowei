@@ -1,0 +1,57 @@
+/* CSS Document */
+
+body {}
+
+.container {
+	width: 866px;
+	margin: 0 auto;
+}
+
+
+.head .logo {
+	background-repeat: no-repeat;
+	height: 62px;
+	line-height: 62px;
+	overflow: hidden;
+	font-family: "黑体";
+	font-size: x-large;
+	text-align: left;
+}
+
+.logo img {
+	width: 62px;
+	height: 62px;
+	float: left;
+}
+.head .login {
+	float: right;
+	font-size: 12px;
+	margin-right: 10px;
+}
+.head div ul {
+	float: right;
+	width: 550px;
+	height: 8px;
+}
+
+.head div ul li {
+	float: left;
+	margin-left: 60px;
+	font-size: 12px;
+}
+
+.head .head_line {
+	height: 10px;
+	background: #68B498;
+}
+
+.main {
+}
+
+.main-left {
+	float: left;
+}
+
+.main-right {
+	float: left;
+}
