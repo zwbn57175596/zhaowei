@@ -7,6 +7,9 @@ body {}
 	margin: 0 auto;
 }
 
+.head {
+	margin-bottom: 5px;
+}
 
 .head .logo {
 	background-repeat: no-repeat;
@@ -46,12 +49,22 @@ body {}
 }
 
 .main {
+
 }
 
 .main-left {
 	float: left;
+	width: 173px;
 }
 
 .main-right {
 	float: left;
+}.container .main .main-left .left-head {
+	background: #68B498;
+}
+.container .main .main-left .left-head {
+	margin-bottom: 20px;
+}
+.container .main .main-left .left-body {
+	font-size: 12px;
 }
