@@ -20,43 +20,52 @@ button, input, select, textarea { /* for ie */
 }
 
 .container {
-	width: 866px;
+	width: 951px;
 	margin: 0 auto;
+}
+
+.head {
+	margin-top: 5px;
 }
 
 .head .logo {
 	background-repeat: no-repeat;
-	height: 62px;
+	height: 67px;
 	line-height: 62px;
 	overflow: hidden;
 	font-family: "黑体";
 	font-size: x-large;
 	text-align: left;
+	margin-left: 52px;
 }
 
 .logo img {
-	width: 62px;
-	height: 62px;
+	width: 67px;
+	height: 67px;
 	float: left;
 }
 .head .login {
 	float: right;
 	font-size: 12px;
-	margin-right: 10px;
+	margin-right: 19px;
 	padding: 5px 10px;
 }
 .head div ul {
 	float: right;
-	width: 550px;
-	height: 8px;
+	width: 516px;
+	margin-right: 58px;
 	padding-top: 5px;
 	padding-bottom: 15px;
 }
 
 .head div ul li {
 	float: left;
-	margin-left: 60px;
+	margin-left: 42px;
+	margin-right: 9px;
+	padding-left: 7px;
 	font-size: 12px;
+	background-image: url(../images/nav_logo.gif);
+	background-repeat: no-repeat;
 }
 
 .head .head_line {
@@ -71,8 +80,12 @@ button, input, select, textarea { /* for ie */
 
 .main-left {
 	float: left;
-	width: 173px;
+	width: 199px;
+	min-height: 673px;
+	height: 673px;
 	height: 100%;
+	background-image: url(../images/bg_main_left.jpg);
+	background-repeat: repeat-y;
 }
 
 .main-left .left-head {
