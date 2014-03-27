@@ -108,10 +108,9 @@ button, input, select, textarea { /* for ie */
 .main-left .left-logo {
 	background-image: url(../images/left-logo.gif);
 	background-repeat: no-repeat;
-	width: 170px;
-	height: 219px;
-	position: absolute;
-	top: 615px;
+	background-position: left bottom;
+	height: 643px;
+	width: 194px;
 }
 
 .main-right {
