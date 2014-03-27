@@ -22,6 +22,7 @@ button, input, select, textarea { /* for ie */
 .container {
 	width: 951px;
 	margin: 0 auto;
+	top: 643px;
 }
 
 .head {
@@ -50,7 +51,7 @@ button, input, select, textarea { /* for ie */
 	margin-right: 19px;
 	padding: 5px 10px;
 }
-.head div ul {
+.head ul {
 	float: right;
 	width: 516px;
 	margin-right: 58px;
@@ -58,7 +59,7 @@ button, input, select, textarea { /* for ie */
 	padding-bottom: 15px;
 }
 
-.head div ul li {
+.head ul li {
 	float: left;
 	margin-left: 42px;
 	margin-right: 9px;
@@ -74,45 +75,107 @@ button, input, select, textarea { /* for ie */
 	margin-bottom: 10px;
 }
 
-.main {
-
-}
-
 .main-left {
 	float: left;
-	width: 199px;
+	width: 194px;
 	min-height: 673px;
 	height: 673px;
 	height: 100%;
 	background-image: url(../images/bg_main_left.jpg);
 	background-repeat: repeat-y;
+	border: 2px solid #C5E3D8;
+	border-radius: 8px;
 }
 
 .main-left .left-head {
 	background: #68B498;
-}
-
-.main-left .left-head {
-	margin-bottom: 20px;
+	width: 165px;
+	height: 30px;
+	margin-top: 5px;
+	margin-left: 4px;
+	border: 2px solid #68B498;
+	border-radius: 5px;
+	font-size: 16px;
+	line-height: 30px;
+	color: #F1F0EF;
+	padding-left: 20px;
 }
 
 .main-left .left-body {
-	font-size: 12px;
+	font-size: 14px;
+}
+
+.main-left .left-logo {
+	background-image: url(../images/left-logo.gif);
+	background-repeat: no-repeat;
+	width: 170px;
+	height: 219px;
+	position: absolute;
+	top: 615px;
 }
 
 .main-right {
-	margin-left: 190px;
+	margin-left: 208px;
 }
 
 .main-right .banner {
+	width: 742px;
+	height: 224px;
 }
 
 .breadcrumb {
-	margin: 10px 0;
-	padding-left: 15px;
+	background-image: url(../images/bread_crumb_icon.png);
+	background-repeat: no-repeat;
+	margin: 10px 19px;
+	padding-left: 22px;
+	font-size: 14px;
+}
+
+.main-right .right-body {
+	height: 416px;
+	background-image: url(../images/right-bg.gif);
+	background-repeat: no-repeat;
+	background-position: right bottom;
 }
 
 .main-right p {
 	margin: 0;
-	padding: 0 30px;
+	padding: 10px 30px;
+	font-size: 14px;
+}
+
+.footer {
+}
+
+.footer .footer_line {
+	height: 20px;
+	background-image: url(../images/bottom_line.png);
+	background-repeat: no-repeat;
+}
+
+.footer ul {
+	margin-left: 108px;
+	margin-bottom: 10px;
+}
+
+.footer ul li {
+	float: left;
+	width: 100px;
+	font-size: 12px;
+	margin-right: 20px;
+}
+
+.footer .copyright {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+	width: 617px;
+}
+
+.footer .company {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	margin-bottom: 60px;
+	width: 205px;
 }
