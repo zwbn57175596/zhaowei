@@ -19,6 +19,11 @@ button, input, select, textarea { /* for ie */
     font: 12px/1 Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif; /* 用 ascii 字符表示，使得在任何编码下都无问题 */
 }
 
+hr {
+	border-style: none;
+	border-width: 0px;
+}
+
 .container {
 	width: 951px;
 	margin: 0 auto;
@@ -50,12 +55,19 @@ body {
 	height: 67px;
 	float: left;
 }
+
 .head .login {
 	float: right;
 	font-size: 12px;
 	margin-right: 19px;
 	padding: 5px 10px;
 }
+
+.head .login .login_button {
+	width: 40px;
+	height: 20px;
+}
+
 .head ul {
 	float: right;
 	width: 516px;
@@ -154,6 +166,12 @@ body {
 	height: 20px;
 	background-image: url(../images/bottom_line.png);
 	background-repeat: no-repeat;
+}
+
+.footer .footer_index_line {
+	height: 20px;
+	border-style: none;
+	border-width: 0px;
 }
 
 .footer ul {
@@ -383,4 +401,70 @@ device page
 	margin: 20px 20px;	
 	text-align: center;	
 	font-size: 12px;
+}
+
+/* index */
+.container .index_content {
+	width: 893px;
+	height: 188px;
+	margin: 5px auto;
+	background: url(../images/index_content_bg.png) no-repeat;
+}
+
+.container .index_content div {
+	background-color: #FFFFFF;
+	margin-top: 6px;
+	margin-left: 5px;
+	display: inline-block;
+	float: left;
+	border: 2px solid #FFFFFF;
+	border-radius: 16px;
+}
+
+.container .index_content .left {
+	width: 380px;
+	height: 163px;
+}
+
+.container .index_content .left img {
+	float: left;
+	margin: 10px; 20px;
+}
+
+.container .index_content h2 {
+	float: left;
+	margin: 20px 10px 10px 10px;
+	background: url(../images/index_content_icon.png) no-repeat;
+	padding-left: 20px;
+	font-weight: bold;
+	font-size: 12px;
+	width: 130px;
+}
+
+.container .index_content .more {
+	background-color: #FFFFFF;
+	margin-left: 5px;
+	display: inline-block;
+	float: left;
+	margin-top: 20px;
+	width: 35px;
+	height: 12px;
+	min-height: 12px;
+	background: url(../images/more.png) no-repeat right;
+}
+
+.container .index_content ul {
+	float: left;
+	margin: 10px 10px auto 10px;
+}
+
+.container .index_content ul li {
+	background: url(../images/index_contant_li.png) no-repeat left center;
+	padding-left: 10px;
+}
+
+.container .index_content .right {
+	width: 240px;
+	height: 163px;
+	border-radius: 8px;
 }
