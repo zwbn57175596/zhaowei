@@ -77,8 +77,8 @@ body {
 	float: right;
 	width: 516px;
 	margin-right: 58px;
-	padding-top: 5px;
-	padding-bottom: 15px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .head ul li {
@@ -118,6 +118,7 @@ body {
 	line-height: 30px;
 	color: #F1F0EF;
 	padding-left: 18px;
+	font-weight: bold;
 }
 
 .main-left .left-body {
@@ -178,22 +179,22 @@ body {
 }
 
 .footer ul {
-	margin-left: 108px;
-	margin-bottom: 10px;
+	width: 720px;
+	margin: 10px auto;
 }
 
 .footer ul li {
 	float: left;
-	width: 100px;
 	font-size: 12px;
-	margin-right: 20px;
+	width: 100px;
+	text-align: center;
+	margin: 0 10px;
 }
 
 .footer .copyright {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 30px;
-	padding: 0px auto;
 	text-align: center;
 	width: 617px;
 }
@@ -302,6 +303,7 @@ device page
 	text-align: left;
 	font-weight: normal;
 	text-indent: 2em;
+	padding: 10px 10px;
 }
 
 /* device2 page */
