@@ -111,14 +111,13 @@ body {
 	background: #68B498;
 	width: 165px;
 	height: 30px;
-	margin-top: 5px;
-	margin-left: 4px;
+	margin: 5px 4px auto 4px;
 	border: 2px solid #68B498;
 	border-radius: 5px;
 	font-size: 16px;
 	line-height: 30px;
 	color: #F1F0EF;
-	padding-left: 20px;
+	padding-left: 18px;
 }
 
 .main-left .left-body {
@@ -143,7 +142,7 @@ body {
 }
 
 .main-right .right-body {
-	height: 416px;
+	height: 427px;
 	background-image: url(../images/right-bg.png);
 	background-repeat: no-repeat;
 	background-position: right bottom;
@@ -151,7 +150,7 @@ body {
 
 .main-right p {
 	margin: 0;
-	padding: 10px 30px;
+	padding: 10px 43px;
 	font-size: 14px;
 }
 
@@ -194,6 +193,8 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 30px;
+	padding: 0px auto;
+	text-align: center;
 	width: 617px;
 }
 
@@ -203,6 +204,7 @@ body {
 	margin-top: 10px;
 	margin-bottom: 60px;
 	width: 205px;
+	text-align: center;
 }
 
 /*
@@ -257,7 +259,7 @@ device page
 	text-align: left;
 	font-weight: normal;
 	text-indent: 2em;
-	padding: 10px 5px;
+	padding: 10px 0px;
 }
 
 .main-left .left-body.left-logo img {
