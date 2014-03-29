@@ -330,7 +330,7 @@ device page
 	background-image: url(../images/left-logo.gif);
 	background-repeat: no-repeat;
 	background-position: left bottom;
-	height: 643px;
+	height: 770px;
 	width: 256px;
 }
 
@@ -342,7 +342,44 @@ device page
 .main-device-right .right-body {
 	height: 100%;
 	width: 100%;
-	background-image: url(../images/right-bg.gif);
-	background-repeat: no-repeat;
-	background-position: right bottom;
+}
+
+.main-device-right .right-body ul {
+	margin-left: 19px;
+	margin-bottom: 20px;
+	width: 660px;
+	height: 940px;
+}
+
+.main-device-right .right-body ul li {
+	width: 135px;
+	position: relative;
+	float: left;
+	list-style-type: none;
+	margin-right: 27px;
+	margin-bottom: 20px;
+}
+
+.main-device-right .right-body ul li img {
+	width: 135px;
+	height: 135px;
+}
+
+.main-device-right .right-body ul li div {
+	width: 135px;
+	height: 20px;
+	min-height: 20px;
+	background-color: #EEF4FD;
+	text-align: center;
+	font-size: 14px;
+	margin-top: 12px;
+	float: left;
+}
+
+.right-body .list-page {
+	height: 30px;
+	min-height: 30px;
+	margin: 20px 20px;	
+	text-align: center;	
+	font-size: 12px;
 }
