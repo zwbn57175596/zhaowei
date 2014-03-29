@@ -25,6 +25,11 @@ button, input, select, textarea { /* for ie */
 	top: 643px;
 }
 
+body {
+	background-image:url(../images/body_bg.png);
+	background-repeat: repeat-x;
+}
+
 .head {
 	margin-top: 5px;
 }
@@ -77,9 +82,7 @@ button, input, select, textarea { /* for ie */
 
 .main-left {
 	float: left;
-	width: 194px;
-	min-height: 673px;
-	height: 673px;
+	width: 194px; 
 	height: 100%;
 	background-image: url(../images/bg_main_left.jpg);
 	background-repeat: repeat-y;
@@ -122,14 +125,6 @@ button, input, select, textarea { /* for ie */
 	height: 224px;
 }
 
-.breadcrumb {
-	background-image: url(../images/bread_crumb_icon.png);
-	background-repeat: no-repeat;
-	margin: 10px 19px;
-	padding-left: 22px;
-	font-size: 14px;
-}
-
 .main-right .right-body {
 	height: 416px;
 	background-image: url(../images/right-bg.gif);
@@ -143,7 +138,16 @@ button, input, select, textarea { /* for ie */
 	font-size: 14px;
 }
 
+.breadcrumb {
+	background-image: url(../images/bread_crumb_icon.png);
+	background-repeat: no-repeat;
+	margin: 20px 20px;
+	padding-left: 22px;
+	font-size: 14px;
+}
+
 .footer {
+	margin-top: 20px;
 }
 
 .footer .footer_line {
@@ -177,4 +181,168 @@ button, input, select, textarea { /* for ie */
 	margin-top: 10px;
 	margin-bottom: 60px;
 	width: 205px;
+}
+
+/*
+device page
+*/
+.middle-left {
+	float: left;
+	width: 50%;
+}
+
+.middle-left .device-img {
+	margin-top: 10px;
+	margin-left: 40px;
+	margin-bottom: 50px;
+}
+
+.middle-right {
+	width: 50%;
+	height: 451px;
+	float: right;
+	background-image:url(../images/device_right_bg.png);
+	background-repeat: no-repeat;
+	background-position: right bottom;
+}
+
+.middle-right .device {
+	margin-left: 15px;
+	margin-bottom: 5px;
+}
+
+.middle-right .ft16 {
+	font-style: normal;
+	font-weight: bolder;
+	font-size: 16px;
+	
+}
+
+.middle-right hr {
+	margin: 0 37px;
+	height: 4px;
+	background-image:url(../images/device_right_hr.png)
+}
+
+.middle-right .device-content {
+	margin: 4px 37px;
+}
+
+.middle-right .device-content p {
+	font-size: 16px;
+	line-height: 26px;
+	text-align: left;
+	font-weight: normal;
+	text-indent: 2em;
+}
+
+.main-left .left-body.left-logo img {
+	margin-top: 4px;
+	margin-left: 4px;
+}
+
+.container .main-right .right-body table {
+	font-size: 14px;
+	margin-top: 30px;
+	margin-left: 50px;
+	margin-right: 60px;
+	border-collapse: collapse;
+	border-spacing: 10px;;
+}
+
+.container .maintian {
+	height: 420px;
+}
+
+.container .main-right .right-body table tr {
+	height: 30px;
+}
+
+.container .main-right .right-body table th {
+	width: 530px;
+}
+
+.container .main-right .maintain-bg {
+	background-image: url(../images/maintain_right_bg.png);
+}
+
+.container .main-left .exper_bread {
+	margin: 20px 10px;
+}
+
+.container .main-right .exper-content p {
+	font-size: 16px;
+	line-height: 26px;
+	text-align: left;
+	font-weight: normal;
+	text-indent: 2em;
+}
+
+/* device2 page */
+
+.main-device-left {
+	float: left;
+	width: 256px;
+	height: 100%;
+	background-image: url(../images/bg_device_left.png);
+	background-repeat: repeat-y;
+	border: 2px solid #C5E3D8;
+	border-radius: 8px;
+}
+
+.main-device-left img {
+	margin: 5px 2px;
+}
+
+.main-device-left .left-head {
+	background: #68B498;
+	width: 222px;
+	height: 30px;
+	margin-top: 5px;
+	margin-left: 4px;
+	border: 2px solid #68B498;
+	border-radius: 5px;
+	font-size: 16px;
+	line-height: 30px;
+	color: #F1F0EF;
+	padding-left: 20px;
+}
+
+.main-device-left .left-body {
+	font-size: 14px;
+}
+
+.main-device-left .left-body ul {
+	margin: 20px 30px 20px 5px;
+}
+
+.main-device-left .left-body ul li {
+	margin-bottom: 24px;
+	background-image: url(../images/bread_crumb_icon.png);
+	background-repeat: no-repeat;
+	padding-left: 22px;
+	height: 22px;
+	min-height: 22px;
+	border-bottom: 3px dotted #DFDFDF;
+}
+
+.main-device-left .left-logo {
+	background-image: url(../images/left-logo.gif);
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	height: 643px;
+	width: 256px;
+}
+
+
+.main-device-right {
+	margin-left: 270px;
+}
+
+.main-device-right .right-body {
+	height: 100%;
+	width: 100%;
+	background-image: url(../images/right-bg.gif);
+	background-repeat: no-repeat;
+	background-position: right bottom;
 }
