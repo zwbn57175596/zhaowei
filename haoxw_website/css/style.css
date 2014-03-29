@@ -156,8 +156,7 @@ body {
 }
 
 .breadcrumb {
-	background-image: url(../images/bread_crumb_icon.png);
-	background-repeat: no-repeat;
+	background: url(../images/bread_crumb_icon.png) no-repeat;
 	margin: 20px 20px;
 	padding-left: 22px;
 	font-size: 14px;
@@ -232,6 +231,7 @@ device page
 .middle-right .device {
 	margin-left: 15px;
 	margin-bottom: 5px;
+	background-position: 0% 50%;
 }
 
 .middle-right .ft16 {
@@ -242,7 +242,7 @@ device page
 }
 
 .middle-right hr {
-	margin: 0 37px;
+	margin: 0 38px;
 	height: 4px;
 	background-image:url(../images/device_right_hr.png)
 }
@@ -252,11 +252,12 @@ device page
 }
 
 .middle-right .device-content p {
-	font-size: 16px;
+	font-size: 14px;
 	line-height: 26px;
 	text-align: left;
 	font-weight: normal;
 	text-indent: 2em;
+	padding: 10px 5px;
 }
 
 .main-left .left-body.left-logo img {
