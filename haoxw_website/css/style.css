@@ -367,12 +367,13 @@ device page
 
 .main-device-right .right-body ul li div {
 	width: 135px;
-	height: 20px;
-	min-height: 20px;
+	height: 18px;
+	min-height: 18px;
 	background-color: #EEF4FD;
 	text-align: center;
 	font-size: 14px;
 	margin-top: 12px;
+	padding-top: 4px;
 	float: left;
 }
 
