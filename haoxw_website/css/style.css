@@ -163,6 +163,7 @@ body {
 	margin: 20px 20px;
 	padding-left: 22px;
 	font-size: 14px;
+	color: #303030;
 }
 
 .footer {
@@ -316,7 +317,7 @@ device page
 	
 
 .container .main-right .exper-content p {
-	font-size: 16px;
+	font-size: 14px;
 	line-height: 26px;
 	text-align: left;
 	font-weight: normal;
@@ -520,7 +521,7 @@ device page
 .manage_breadcrumb {
 	background-image: url(../images/manage_bread.png);
 	background-repeat: no-repeat;
-	margin: 20px 20px;
+	margin: 13px 20px;
 	padding-left: 22px;
 	font-size: 14px;
 }
