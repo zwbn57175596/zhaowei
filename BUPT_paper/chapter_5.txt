@@ -14,10 +14,10 @@
 
     最终模块划分如下：
     公共模块：
-    gongzuoquan-mongo，提供数据库接入操作的服务。
+    gongzuoquan-mongo，提供数据库接入操作的封装。
     gongzuoquan-cache，提供对缓存服务的接入操作。
     gongzuoquan-configcenter，提供自动化配置中的管理操作。
-    gongzuoquan-util，提供一个公共的工具类方法
+    gongzuoquan-util，提供一些公共的工具类方法
 
     核心业务服务
     gongzuoquan-idcenter，提供全局主键生成服务。
