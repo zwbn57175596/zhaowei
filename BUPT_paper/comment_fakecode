@@ -1,0 +1,30 @@
+// 新增评论
+if ResourceId信息为空
+  return 评论保存的ResourceId不能为空
+else
+  将评论保存在这个ResourceId对应的评论列表中
+  if 这条评论是回复他人的评论
+    通过消息通道给被回复人发送一条回复类型的通知
+  else
+    通过消息通道给这个Resource的创建者发送一条评论类型的通知
+  if 评论的内容中有@他人的内容
+    通过消息通道给被@的用户发送一条评论@类型的通知
+  asnyc 将评论的数据以异步处理的方式发送到智能平台
+  return 评论成功
+
+// 删除评论
+if 操作用户是评论的发起者
+  删除评论
+  return 删除成功
+else if 操作用户是管理员
+  删除评论
+  return 删除成功
+else
+  return 提示用户:'您不能删除他人的评论'
+
+// 查询评论列表
+if ResourceId不为空
+  从工作圈的数据库中查询这个Resource下的评论列表
+  return 返回查询结果
+else
+  return 查询参数不正确

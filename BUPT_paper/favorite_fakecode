@@ -1,0 +1,27 @@
+// 点赞
+if ResourceId信息为空
+  return 点赞的ResourceId不能为空
+else if 用户没有为这个ResourceId点过赞
+  将赞保存在这个ResourceId对应的点赞列表中
+  通过消息通道给被点赞人发送一条点赞类型的通知
+  asnyc 将赞的数据以异步处理的方式发送到智能平台
+  return 成功
+else
+  return 提示用户:'您已经点过赞了'
+
+// 取消赞
+if 操作用户是赞的发起者
+  if 用户为这个ResourceId点过赞
+    取消赞
+    return 取消成功
+  else
+    return 提示用户:'您还没有点过赞'
+else
+  return 不能取消他人的点赞
+
+// 查询赞列表
+if ResourceId不为空
+  从工作圈的数据库中查询这个Resource下的赞列表
+  return 返回查询结果
+else
+  return 查询参数不正确
